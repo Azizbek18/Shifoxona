@@ -1,0 +1,206 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+.h1{
+    color: #2563EB;
+}
+.kirish{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+}
+.otish{
+    background-color: #2563EB;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+}
+.container{
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+ul a{
+    text-decoration: none;
+    color: gray;
+}
+.rang{
+    color: #2563EB;
+}
+.med{
+    display: flex;
+    gap: 10px;
+}
+header{
+    background-color: #FFFFFF;
+}
+.katta-input{
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+}
+.katta-btn{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+}
+.katta{
+    text-align: center;
+}
+.pain-box {
+    width: 300px;
+    border: 2px dashed #4da3ff;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+.pain-box label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+input[type="range"] {
+    width: 100%;
+    appearance: none;
+    height: 6px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #4da3ff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 5px;
+    color: #666;
+}
+.result-btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 8px;
+    background: #4da3ff;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.eng-katta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.ota{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+.pastki-btn{
+    background-color: #2563EB;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    width: 300px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.yangi-btn{
+    color: #15803D;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+}
+.sarlavha{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.katta2-yangi{
+    background-color: #EFF6FF;
+    border-radius: 10px;
+    padding: 20px;
+}
+.ikta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.card:last-child {
+    border-bottom: none;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    object-fit: cover;
+    background-color: #333;
+}
+.info {
+    margin-left: 15px;
+}
+.info h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: 700;
+}
+.info p {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    color: #8892a0;
+}
+.btn {
+    background-color: #e8edff;
+    color: #2d54e5;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn:hover {
+    background-color: #d1dbff;
+}
