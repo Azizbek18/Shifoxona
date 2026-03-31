@@ -145,6 +145,10 @@ header {
     font-size: 14px;
     font-weight: 600;
 }
+.card{
+    width: 800px;
+    margin-top: 10px;
+}
 .card-footer {
     border-top: 1px solid #eee;
     padding-top: 15px;

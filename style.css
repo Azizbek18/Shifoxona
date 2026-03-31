@@ -3,39 +3,7 @@
 }
 body{
     margin: 0;
-}
-.h1{
-    color: #2563EB;
-}
-.container{
-    max-width: 1140px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-ul{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    list-style: none;
-}
-ul a{
-    color: gray;
-    text-decoration: none;
-}
-.kirish{
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-}
-.otish{
-    background-color: #004AC6;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: white;
-    border: none;
+    background-color: #E2E8F0;
 }
 .katta-ai{
     display: flex;
@@ -58,12 +26,25 @@ ul a{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    width: max-content;
+    padding: 20px;
+    width: 500px;
+}
+.katta2-katta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .katta-input{
-    height: 180px;
-    width: 300px;
+    height: 100px;
+    width: 100%;
     border-radius: 10px;
     color: black;
+    border: none;
+    outline: none;
 }
 .katta-kirish{
     background-color: #004AC6;
@@ -73,8 +54,20 @@ ul a{
     border: none;
     margin-top: 10px;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
+    width: 100%;
+}
+.katta-golos{
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 8px;
+    background-color: transparent;
+    width: 100%;
 }
 .katta-btn{
     padding: 10px 20px;
@@ -173,4 +166,44 @@ ul a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+
+@media(max-width:768px){
+    .katta{
+        text-align: center;
+    }
+    .katta2-katta{
+        width: 100%;
+    }
+    .katta3{
+        flex-direction: column;
+    }
+    .katta4-katta{
+        width: 100%;
+        text-align: center;
+    }
+    .katta5{
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+    .katta6-katta{
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+    .katta-img img{
+        width: 100%;
+    }
+    .footer{
+        text-align: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+    .billa{
+        display: flex;
+        justify-content: center;
+    }
 }
