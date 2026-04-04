@@ -316,3 +316,28 @@ header {
     display: flex;
     justify-content: center;
 }
+
+
+@media(max-width:768px){
+    .bitta{
+        text-align: center;
+    }
+    .info-footer{
+        text-align: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .container{
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .card{
+        flex-direction: column;
+        text-align: center;
+    }
+    .status-label{
+        display: flex;
+        justify-content: center;
+    }
+}

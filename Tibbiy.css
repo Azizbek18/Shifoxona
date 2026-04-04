@@ -163,3 +163,33 @@ header {
 .kattaroq .container {
     flex-direction: column;
 }
+
+
+@media(max-width:768px){
+    .sarlavha{
+        text-align: center;
+    }
+    .buttonlar .btn{
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .buttonlar .button{
+        width: 100%;
+        margin: 4px;
+    }
+    .card-header{
+        width: 100%;
+    }
+    .card-kichik{
+        text-align: center;
+    }
+    .card{
+        width: 100%;
+    }
+    .info-group{
+        text-align: center;
+    }
+    main{
+        padding: 20px;
+    }
+}
