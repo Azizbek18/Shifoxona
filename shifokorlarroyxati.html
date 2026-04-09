@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="shidokorlarroyhati.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -31,7 +32,7 @@
         </p>
 
         <div class="qidiruv-box">
-            <input type="text" placeholder=" Shifokor ismi...">
+            <input class="input" type="text" placeholder=" Shifokor ismi...">
             <div class="tozala">
                 <button class="active">Hammasi</button>
                 <button>Terapevt</button>
@@ -42,18 +43,18 @@
         </div>
     </section>
     <section class="sec1">
-        <div class="container">
+        <div id="con" class="container">
             <div class="card">
                 <div class="left">
                     <div class="avatar">SK</div>
                     <div>
-                        <h3>Dr. Sardor Komilov</h3>
-                        <p>Stomatolog</p>
+                        <h3 id="ism">Dr. Sardor Komilov</h3>
+                        <p id="turi">Stomatolog</p>
                         <span class="rating">⭐️ 4.9 • 210 sharh</span>
                     </div>
                 </div>
                 <div class="right">
-                    <p>Bugun bo‘sh: <span>14:00 16:00</span></p>
+                    <p>Bugun bo‘sh: <span id="vaqt">14:00 16:00</span></p>
                     <button>Qabul olish →</button>
                 </div>
             </div>
@@ -123,7 +124,7 @@
 
         <div class="steps-container">
 
-            <div class="step">
+              <div class="step">
                 <div class="icon">👨‍⚕️</div>
                 <h3>Tanlov</h3>
                 <p>Sizga mos mutaxassisni reyting va sharhlar asosida tanlang.</p>
@@ -186,6 +187,7 @@
         </div>
 
     </footer>
+    <script src="./shifokorlarroyhati.js"></script>
 </body>
 
 </html>
