@@ -29,7 +29,6 @@ body {
     font-size: 18px;
     color: #2b6cb0;
 }
-
 .menu {
     display: flex;
     gap: 25px;
@@ -396,4 +395,41 @@ footer {
 .copyright {
     color: #6b7280;
     font-size: 13px;
+}
+
+@media(max-width:768px){
+    .menu{
+        display: none;
+        text-align: center;
+    }
+    .patki{
+        text-align: center;
+    }
+    .profile-header{
+        text-align: center;
+    }
+    .calendar-header{
+        width: 100%;
+        text-align: center;
+    }
+    .days-grid{
+        width: 100%;
+        text-align: center;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .booking-card{
+        padding: 20px;
+    }
+    .features{
+        flex-direction: column;
+    }
+    .feature-item{
+        width: 100%;
+    }
+    .booking-card{
+        min-width: 100%;
+    }
+.footer-container{
+    flex-direction: column;
+}
 }

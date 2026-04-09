@@ -18,7 +18,9 @@ body {
     background: white;
     border-bottom: 1px solid #ddd;
 }
-
+nav{
+    display: flex;
+}
 .logo {
     font-weight: bold;
     color: #4a6cf7;
@@ -76,7 +78,7 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
-.qidiruv-box input {
+.input {
     width: 600px;
     padding: 10px;
     border: 1px solid #ddd;
@@ -264,4 +266,14 @@ button:hover {
   margin-top: 30px;
   font-size: 13px;
   color: gray;
+}
+
+@media(max-width:768px){
+    .qidiruv-box{
+        flex-direction: column;
+    }
+    .input{
+width: 100%;
+    }
+
 }
