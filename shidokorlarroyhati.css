@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f6f8;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-weight: bold;
+    color: #4a6cf7;
+    font-size: 20px;
+}
+
+.navbar nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #555;
+}
+
+.navbar nav .active {
+    color: #4a6cf7;
+    font-weight: bold;
+}
+
+.kir a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.kir button {
+    background: #4a6cf7;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+
+}
+
+.sec {
+    padding: 50px 40px;
+}
+
+.sec h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.sec p {
+    color: #666;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.qidiruv-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.qidiruv-box input {
+    width: 600px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.tozala {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tozala button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    background: #eee;
+    cursor: pointer;
+}
+
+.tozala .active {
+    background: #4a6cf7;
+    color: white;
+}
+
+.container {
+   width:  900px;
+    margin: auto;
+}
+
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: #e0e7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #3b5bdb;
+}
+
+h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+p {
+    margin: 2px 0;
+    color: gray;
+    font-size: 14px;
+}
+
+.rating {
+    font-size: 13px;
+    color: #444;
+}
+
+.right {
+    text-align: right;
+}
+
+.right p {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.right span {
+    color: green;
+    font-weight: bold;
+}
+
+button {
+    padding: 8px 14px;
+    border: 1px solid #3b5bdb;
+    background: transparent;
+    color: #3b5bdb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #3b5bdb;
+    color: #fff;
+}
+
+.steps {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.steps h2 {
+  margin-bottom: 40px;
+}
+
+.steps-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.step {
+  max-width: 200px;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  background: #eef1f7;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 24px;
+}
+
+.step h3 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.step p {
+  font-size: 14px;
+  color: gray;
+}
+
+.line {
+  width: 80px;
+  height: 2px;
+  background: #ddd;
+}
+
+.footer {
+  background: #fff;
+  padding: 40px 20px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.col h3, .col h4 {
+  margin-bottom: 10px;
+}
+
+.col p {
+  margin: 5px 0;
+  color: gray;
+  font-size: 14px;
+}
+
+.icons {
+  font-size: 20px;
+}
+
+.bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: gray;
+}
