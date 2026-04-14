@@ -3,21 +3,6 @@ let supaBaseUrl = 'https://yzucexsnhdaicnrkztrj.supabase.co '
 
 const _supabase = supabase.createClient(supaBaseUrl, supabaseKey)
 
-const xabarCon = document.querySelector(".xabar-con")
-function xabarnoma(xabar, turi) {
-    let xabarMatn = document.createElement('div');
-    xabarMatn.classList.add("xabar", turi)
-    console.log(xabarMatn);
-
-    xabarMatn.innerText = xabar;
-
-    setTimeout(() => {
-        xabarMatn.remove();
-    }, 4000);
-
-    xabarCon.appendChild(xabarMatn)
-}
-
 async function Yuborish() {
     let input = document.getElementById('input')
     let pasvord = document.getElementById('pasvord')
