@@ -99,10 +99,10 @@
                     <button class="nav-btn"><i class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="days-grid">
-                    <div class="day-item disabled"><span>Du</span><strong>26</strong></div>
-                    <div class="day-item disabled"><span>Se</span><strong>27</strong></div>
+                    <div class="day-item "><span>Du</span><strong>26</strong></div>
+                    <div class="day-item "><span>Se</span><strong>27</strong></div>
                     <div class="day-item active"><span>Ch</span><strong>28</strong></div>
-                    <div class="day-item"><span>Pa</span><strong>29</strong></div>
+                    <div id="day" class="day-item"><span>Pa</span><strong>29</strong></div>
                     <div class="day-item"><span>Ju</span><strong>30</strong></div>
                     <div class="day-item"><span>Sh</span><strong>31</strong></div>
                     <div class="day-item"><span>Ya</span><strong>1</strong></div>
@@ -111,14 +111,14 @@
 
             <section class="time-section">
                 <div class="time-grid">
-                    <button class="time-btn">09:00</button>
+                    <button id="time" class="time-btn">09:00</button>
                     <button class="time-btn">09:30</button>
-                    <button class="time-btn disabled" disabled>10:00</button>
+                    <button class="time-btn " >10:00</button>
                     <button class="time-btn">11:00</button>
-                    <button class="time-btn selected">14:00</button>
+                    <button class="time-btn ">14:00</button>
                     <button class="time-btn">14:30</button>
                     <button class="time-btn">15:00</button>
-                    <button class="time-btn disabled" disabled>16:00</button>
+                    <button class="time-btn ">16:00</button>
                 </div>
             </section>
 
@@ -149,7 +149,7 @@
                     <span class="price-label">To'lov miqdori</span>
                     <p class="price-value">80,000 <span>SO'M</span></p>
                 </div>
-                <button class="submit-btn">Qabulga yozilish</button>
+                <button id="yubor" class="submit-btn">Qabulga yozilish</button>
             </footer>
         </main>
     </div>
@@ -205,6 +205,9 @@
         </div>
     </footer>
 
+
+
+    <script src="./shifokor.js"></script>
 </body>
 
 </html>

@@ -27,14 +27,14 @@ async function Kirish() {
         window.location.href = "royhat.html"
     }
     else {
-        const { data, error} = await _supabase
+        const { data, error } = await _supabase
             .from('login')
             .insert([
                 {
-                    ism :ism.value,
-                    parol:parol.value,
-                    sana:sana.value,
-                    tel:tel.value
+                    ism: ism.value,
+                    parol: parol.value,
+                    sana: sana.value,
+                    tel: tel.value
 
 
 
@@ -44,8 +44,22 @@ async function Kirish() {
             alert("Xatolik yuz berdi" + error.message)
             return
         }
-        else{
+        else {
             alert("Siz muvaffaqiyatli ro'yhatdan o'tdingiz")
         }
     }
+}
+const xabarCon = document.querySelector(".xabar-con")
+function xabarnoma(xabar, turi) {
+    let xabarMatn = document.createElement('div');
+    xabarMatn.classList.add("xabar", turi)
+    console.log(xabarMatn);
+
+    xabarMatn.innerText = xabar;
+
+    setTimeout(() => {
+        xabarMatn.remove();
+    }, 4000);
+
+    xabarCon.appendChild(xabarMatn)
 }
