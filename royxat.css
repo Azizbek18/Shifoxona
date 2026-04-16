@@ -76,6 +76,9 @@ button:hover {
     text-decoration: none;
     font-weight: bold;
 }
+.login{
+    text-align: center;
+}
 
 
 /* Xabarnoma uchun */
@@ -95,7 +98,15 @@ button:hover {
     animation: kirish 1s ease, chiqish 1s ease 2s forwards;
 }
 
-
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #f1f1f1;
+    outline: none;
+    box-sizing: border-box; 
+}
 
 .error{
     background-color: red;
