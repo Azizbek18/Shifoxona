@@ -3,28 +3,46 @@ let supaBaseUrl = 'https://yzucexsnhdaicnrkztrj.supabase.co '
 
 const _supabase = supabase.createClient(supaBaseUrl, supabaseKey)
 
-async function Yuborish() {
-    let input = document.getElementById('input')
-    let pasvord = document.getElementById('pasvord')
-    if(input.value == "" && pasvord.value == ""){
-        alert("Maydonlarni to'ldiring")
+const xabarCon = document.querySelector(".xabar-con")
+function xabarnoma(xabar, turi) {
+    let xabarMatn = document.createElement('div');
+    xabarMatn.classList.add("xabar", turi)
+    console.log(xabarMatn);
+
+    xabarMatn.innerText = xabar;
+
+    setTimeout(() => {
+        xabarMatn.remove();
+    }, 4000);
+
+    xabarCon.appendChild(xabarMatn)
+}   
+
+async function Kirish() {
+    let ism = document.getElementById('input')
+    let tel = document.getElementById('pasvord')
+
+    if (ism.value == "" && tel.value == "") {
+          xabarnoma("Maydonlarni to'ldiring",'info')
         return
     }
 
-    const {data:foydalanuvchi, error:xatolik} = await _supabase
-    .from('login')
-    .select('*')
-    .eq('email',input.value)
-    .eq('parol', pasvord.value)
-    if(xatolik){
-        alert("Xatolik yuz berdi" + error.message)
+    const { data: foydalanuvchi, error: xatolik } = await _supabase
+        .from('login')
+        .select('*')
+        .eq('email', ism.value)
+        .eq('parol', tel.value)
+    if (xatolik) {
+        xabarnoma('Xatolik yuz berdi','error')
         return
     }
-    if(foydalanuvchi.length > 0){
-        alert("Siz ro'yhatdan o'tgan  ekansiz. Kirish qismiga o'ting")
-        window.location.href = "royhat.html"
+    if (foydalanuvchi.length > 0) {
+        xabarnoma('Siz tizimga kirdingiz','success')
+        setTimeout(() => {
+            window.location.href = 'index.html'
+        }, 2500);
     }
-    else{
-        alert("Siz ro'yhatdan o'tmagansiz")
+    else {
+         xabarnoma("Siz ro'yhatdan o'tmagansiz",'error')
     }
 }

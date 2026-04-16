@@ -11,34 +11,38 @@
 
 <body>
     <header class="navbar">
-        <div class="logo">MedBook</div>
-        <nav>
-            <a href="#">Asosiy</a>
-            <a href="#" class="active">Shifokorlar</a>
-            <a href="#">Xizmatlar</a>
-            <a href="#">Yordam</a>
-        </nav>
-        <div class="kir">
-            <a href="#">Kirish</a>
-            <button>Ro'yxatdan o'tish</button>
+        <div class="container">
+            <div class="logo">MedBook</div>
+            <nav>
+                <a href="#">Asosiy</a>
+                <a href="#" class="active">Shifokorlar</a>
+                <a href="#">Xizmatlar</a>
+                <a href="#">Yordam</a>
+            </nav>
+            <div class="kir">
+                <a href="./kirish.html">Kirish</a>
+                <button> <a href="./royxat.html">Ro'yxatdan o'tish</a></button>
+            </div>
         </div>
     </header>
 
     <section class="sec">
-        <h1>Shifokorlar</h1>
-        <p>
-            Sizga mos mutaxassisni toping va onlayn qabulga yoziling.
-            Bizning barcha shifokorlarimiz malakali mutaxassislardir.
-        </p>
+        <div class="container">
+            <h1>Shifokorlar</h1>
+            <p>
+                Sizga mos mutaxassisni toping va onlayn qabulga yoziling.
+                Bizning barcha shifokorlarimiz malakali mutaxassislardir.
+            </p>
 
-        <div class="qidiruv-box">
-            <input class="input" type="text" placeholder=" Shifokor ismi...">
-            <div id="tozala" class="tozala">
-                <button class="active">Hammasi</button>
-                <button>Terapevt</button>
-                <button>Stomatolog</button>
-                <button>Ko'z shifokori</button>
-                <button>Bolalar shifokori</button>
+            <div class="qidiruv-box">
+                <input id="qidirish" class="input" type="text" placeholder=" Shifokor ismi...">
+                <div id="tozala" class="tozala">
+                    <button class="active">Hammasi</button>
+                    <button>Terapevt</button>
+                    <button>Stomatolog</button>
+                    <button>Ko'z shifokori</button>
+                    <button>Bolalar shifokori</button>
+                </div>
             </div>
         </div>
     </section>
@@ -124,7 +128,7 @@
 
         <div class="steps-container">
 
-              <div class="step">
+            <div class="step">
                 <div class="icon">👨‍⚕️</div>
                 <h3>Tanlov</h3>
                 <p>Sizga mos mutaxassisni reyting va sharhlar asosida tanlang.</p>

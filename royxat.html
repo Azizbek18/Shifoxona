@@ -11,11 +11,11 @@
 </head>
 
 <body>
+    <div class="xabar-con"></div>
     <div class="container">
         <h2>Ro'yxatdan o'tish</h2>
         <p class="subtitle">Sog'lig'ingiz bizga muhim</p>
-        
-        <div class="xabar-con"></div>
+
         <form>
             <label>To'liq ism</label>
             <input id="ism" type="text" placeholder="Ismingizni kiriting">
@@ -24,15 +24,19 @@
             <input id="tel" type="text" placeholder="+998 95 257 05 22">
 
             <label>Tug'ilgan sana</label>
-            <input id="sana" type="text" placeholder="KK.OO.YYYY">
+            <input id="sana" type="date" placeholder="KK.OO.YYYY">
 
             <label>Jinsi</label>
-                <div class="gender">
-                    <label><input type="radio" name="gender"> Erkak</label>
-                    <label><input type="radio" name="gender"> Ayol</label>
-                </div>
+            <div class="gender">
+                <select id="jinsi"
+                    style="width: 100%; padding: 10px; border-radius: 8px; border: none; background: #f1f1f1; outline: none; cursor: pointer;">
+                    <option value="" disabled selected>Tanlang</option>
+                    <option value="erkak">Erkak</option>
+                    <option value="ayol">Ayol</option>
+                </select>
+            </div>
             <label>Email</label>
-            <input type="email" placeholder="example@mail.com">
+            <input id="email" type="email" placeholder="example@mail.com">
 
             <label>Parol</label>
             <input id="parol" type="password" placeholder="********">
@@ -40,7 +44,7 @@
             <button type="button" onclick="Kirish()">Hisob yaratish</button>
         </form>
 
-        <p class="login">Hisobingiz bormi? <a href="#">Kiring</a></p>
+        <p class="login">Hisobingiz bormi? <a href="./kirish.html">Kiring</a></p>
     </div>
 
     <script src="./royhat.js"></script>
