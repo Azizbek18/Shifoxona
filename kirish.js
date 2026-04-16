@@ -1,7 +1,3 @@
-let supabaseKey = 'sb_publishable_qguz__gQ8NQiED350KJ6ZA_PTj-pMZ2'
-let supaBaseUrl = 'https://yzucexsnhdaicnrkztrj.supabase.co '
-
-const _supabase = supabase.createClient(supaBaseUrl, supabaseKey)
 const xabarCon = document.querySelector(".xabar-con")
 function xabarnoma(xabar, turi) {
     let xabarMatn = document.createElement('div');
@@ -15,7 +11,7 @@ function xabarnoma(xabar, turi) {
     }, 4000);
 
     xabarCon.appendChild(xabarMatn)
-}
+}   
 
 async function Kirish() {
     let ism = document.getElementById('ism')
@@ -64,4 +60,3 @@ async function Kirish() {
 
     }
 }
-

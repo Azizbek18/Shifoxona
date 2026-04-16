@@ -76,6 +76,9 @@ button:hover {
     text-decoration: none;
     font-weight: bold;
 }
+
+
+/* Xabarnoma uchun */
 .xabar-con{
     position: fixed;
     top: 30px;
@@ -101,7 +104,7 @@ button:hover {
     background-color: rgb(0, 209, 0);
 }
 .info{
-    background-color: skyblue;
+    background-color: rgba(27, 48, 201, 0.694);
 }
 @keyframes kirish{
     from{

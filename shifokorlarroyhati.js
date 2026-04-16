@@ -1,75 +1,80 @@
 let supabaseUrl = `https://doboqtivghcdcoowoxmh.supabase.co`
 let supabaseKey = `sb_publishable_VzI36RYaoGx_8MfGne-MhA_KjXo82Lv`
-let ism = document.getElementById('ism')
-let turi = document.getElementById('turi')
-let vaqt = document.getElementById('vaqt')
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey)
-let hammasi = []
-let con = document.getElementById('con')
 
+let hammasi = [] // Barcha shifokorlar saqlanadi
+let con = document.getElementById('con')
+let tozala = document.getElementById("tozala")
+let qidirish = document.getElementById("qidirish")
+
+// 1. Render qilish funksiyasi (HTML yaratish)
+function renderShifokorlar(data) {
+    let html = ''
+    data.forEach(element => {
+        html += `
+            <div class="card">
+                <div class="left">
+                    <div class="avatar">${element.Ism.substring(0, 2).toUpperCase()}</div>
+                    <div>
+                        <h3 class="ism">${element.Ism}</h3>
+                        <p class="turi">${element.turi}</p>
+                        <span class="rating">⭐️ 4.9 • 210 sharh</span>
+                    </div>
+                </div>
+                <div class="right">
+                    <p>Bugun bo‘sh: <span class="vaqt">${element.vaqti}</span></p>
+                    <button>Qabul olish →</button>
+                </div>
+            </div>
+        `
+    });
+    con.innerHTML = html || "<p>Shifokor topilmadi...</p>";
+}
+
+// 2. Supabase'dan ma'lumot olish
 async function Olish() {
     const { data, error } = await _supabase
         .from('shifokorlar')
         .select('*')
+    
     if (error) {
-        alert("Xatolik yuz berdi" + error.message)
-    }
-    else {
-        console.log(data);
+        alert("Xatolik yuz berdi: " + error.message)
+    } else {
         hammasi = data
-        let html = ''
-        data.forEach(element => {
-            html += `
-            <div class="card">
-                <div class="left">
-                    <div class="avatar">dok</div>
-                    <div>
-                        <h3 id="ism">${element.Ism}</h3>
-                        <p id="turi">${element.turi}</p>
-                        <span class="rating">⭐️ 4.9 • 210 sharh</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <p>Bugun bo‘sh: <span id="vaqt">${element.vaqti}</span></p>
-                    <button>Qabul olish →</button>
-                </div>
-            </div>
-            `
-        });
-        con.innerHTML = html
+        renderShifokorlar(hammasi)
     }
-
 }
 
 Olish()
 
-let tozala = document.getElementById("tozala")
+tozala.addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON") return;
 
+    const tanlanganMatn = e.target.innerText.trim().toLowerCase();
 
-tozala.addEventListener("click",(e)=>{
-    let html = ''
-    if (e.target.value == 'Hammasi') {
-        hammasi.forEach(element => {
-            html += `
-                <div class="card">
-                <div class="left">
-                    <div class="avatar">dok</div>
-                    <div>
-                        <h3 id="ism">${element.Ism}</h3>
-                        <p id="turi">${element.turi}</p>
-                        <span class="rating">⭐️ 4.9 • 210 sharh</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <p>Bugun bo‘sh: <span id="vaqt">${element.vaqti}</span></p>
-                    <button>Qabul olish →</button>
-                </div>
-            </div>
-            `
+    document.querySelectorAll('#tozala button').forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+
+    if (tanlanganMatn === "hammasi") {
+        renderShifokorlar(hammasi);
+    } else {
+        const saralangan = hammasi.filter(shifokor => {
+            return shifokor.turi.toLowerCase().trim() === tanlanganMatn;
         });
-        con.innerHTML = html
-    }
-    else if(e.target.value == "Terapevt"){
         
+        renderShifokorlar(saralangan);
     }
-})
+});
+
+qidirish.addEventListener('input', (e) => {
+    const qidiruvMatni = e.target.value.toLowerCase().trim();
+
+    const qidiruvNatijasi = hammasi.filter(shifokor => {
+        return shifokor.Ism.toLowerCase().includes(qidiruvMatni);
+    });
+
+
+    renderShifokorlar(qidiruvNatijasi);
+    
+    document.querySelectorAll('#tozala button').forEach(btn => btn.classList.remove('active'));
+});
