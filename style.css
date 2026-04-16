@@ -1,0 +1,209 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: #E2E8F0;
+}
+.katta-ai{
+    display: flex;
+    justify-content: center;
+}
+.ai{
+    color: #2563EB;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+}
+.rang{
+    color: #2563EB;
+}
+.katta{
+    text-align: center;
+}
+.katta2{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    width: max-content;
+    padding: 20px;
+    width: 500px;
+}
+.katta2-katta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.katta-input{
+    height: 100px;
+    width: 100%;
+    border-radius: 10px;
+    color: black;
+    border: none;
+    outline: none;
+}
+.katta-kirish{
+    background-color: #004AC6;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+.katta-golos{
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 8px;
+    background-color: transparent;
+    width: 100%;
+}
+.katta-btn{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+}
+.katta3{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+.katta-sarlavha{
+    display: flex;
+    justify-content: space-between;
+}
+.katta4{
+    width: 400px;
+    background-color: #EFF6FF;
+    padding: 20px;
+    border-radius: 10px;
+}
+.katta4-katta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.katta4-btn{
+    color: #D97706;
+    width: 100%;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+}
+.katta4-btn2{
+    border: 2px solid #004AC6;
+    background-color: transparent;
+    color: #004AC6;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    margin-top: 8px;
+}
+.katta5{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+.katta6-btn{
+    padding: 10px 20px;
+    color: #004AC6;
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+}
+.katta6-katta{
+    display: flex;
+    justify-content: center;
+    background-color: #F2F4F6;
+    text-align: center;
+}
+.katta6-xavfli{
+    background-color: #004AC6;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+}
+.footer{
+    background-color: #EFF6FF;
+    margin-top: 10px;
+    display: flex;
+    text-align: center;
+}
+.ikon{
+    width: 20px;
+}
+.footer1{
+    gap: 10px;
+}
+.billa{
+    display: flex;
+}
+.ilova{
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+@media(max-width:768px){
+    .katta{
+        text-align: center;
+    }
+    .katta2-katta{
+        width: 100%;
+    }
+    .katta3{
+        flex-direction: column;
+    }
+    .katta4-katta{
+        width: 100%;
+        text-align: center;
+    }
+    .katta5{
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+    .katta6-katta{
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+    .katta-img img{
+        width: 100%;
+    }
+    .footer{
+        text-align: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+    .billa{
+        display: flex;
+        justify-content: center;
+    }
+}

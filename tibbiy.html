@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tibbiy</title>
+    <!-- fontawesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Tibbiy.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+        <header>
+        <div class="container">
+            <div class="ikon">
+                <img src="./Icon (13).svg" alt="">
+                <h1>MedBook</h1>
+            </div>
+            <ul>
+                <li><a href="">Asosiy</a></li>
+                <li><a href="">>Shifokorlar</a></li>
+                <li><a href="">Xizmatlar</a></li>
+                <li><a href="">Yordam</a></li>
+            </ul>
+            <i class="fa-regular fa-bell"></i>
+            <img src="./Aziz T..svg" alt="">
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="sarlavha">
+                <h1>Tibbiy tarix</h1>
+                <p>Barcha tibbiy ko'riklar, tahlil natijalari va tayinlangan dori-darmonlarning to'liq arxivi.</p>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="buttonlar">
+                    <button class="btn">Hammasi</button>
+                    <button class="button">Qabullar</button>
+                    <button class="button">Tahlillar</button>
+                    <button class="button">Dorilar</button>
+                </div>
+            </div>
+        </section>
+        <section class="kattaroq">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-kichik">
+                            <h3 class="doctor-name">Dr. Kamolov — Stomatolog</h3>
+                            <p class="location">Markaziy Stomatologiya Klinikasi</p>
+                        </div>
+                        <span class="status status-blue">KO'RIK YAKUNLANDI</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <p class="label">TASHXIS:</p>
+                            <p class="value">Karies (2-chi tish)</p>
+                        </div>
+                        <div class="info-group">
+                            <p class="label">TAYINLANGAN DORI:</p>
+                            <p class="value">Amoxicillin 500mg — 7 kun</p>
+                        </div>
+                    </div>
+                    <a href="#" class="link-btn">Batafsil &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="doctor-name">Qon tahlili natijalari</h3>
+                            <p class="location">Labo-Expert Analitika</p>
+                        </div>
+                        <span class="status status-green">TAYYOR</span>
+                    </div>
+                    <div class="result-box">
+                        <div>
+                            <p class="label-sm">Asosiy ko'rsatkich</p>
+                            <p class="value-lg">Gemoglobin</p>
+                        </div>
+                        <div class="result-value">
+                            <span class="number">13.2</span>
+                            <span class="norma">NORMA</span>
+                        </div>
+                    </div>
+                    <a href="#" class="link-btn">Natijani ko'rish</a>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="doctor-name">Dr. Toshmatov — Terapevt</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-group">
+                            <p class="label">TASHXIS:</p>
+                            <p class="value">ARVI</p>
+                        </div>
+                        <div class="info-group">
+                            <p class="label">TAVSIYA ETILGAN:</p>
+                            <p class="value">Paracetamol, Vitamin C</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span>Qayta ko'rik: 17 Mart</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="tibbiy.js"></script>
+</body>
+
+</html>

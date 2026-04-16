@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tahlil</title>
+    <!-- fontawesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="tahlil.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="ikon">
+            <img src="./Icon (13).svg" alt="">
+            <h1>MedBook</h1>
+            </div>
+            <ul>
+                <li><a href="">Asosiy</a></li>
+                <li><a href=""><span class="rang">Shifokorlar</span></a></li>
+                <li><a href="">Xizmatlar</a></li>
+                <li><a href="">Yordam</a></li>
+            </ul>
+            <button class="kirish"><i class="fa-regular fa-bell"></i>Kirish</button>
+            <button class="royhat">Ro'yxatdan o'tish</button>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="katta">
+                <h2>Shifokor toping</h2>
+                <p>Shikoyatingizni batafsil yozing</p>
+            </div>
+        </section>
+        <div class="eng-katta">
+            <section class="ikta">
+                <div class="katta2">
+                    <div class="chat-konteyner">
+                        <div class="chat-oynasi" id="chatOynasi">
+                        <div class="ichida">
+                        <p><img src="ruchka.svg" alt=""> Shikoyat tafsiloti</p>
+                        <p>0 / 500</p>
+                    </div>
+                            <div class="xabar ai">Qanday muammoingiz bor? Batafsil yozing...</div>
+                        </div>
+
+                        <div class="input-qismi">
+                            <input type="text" id="userInput" placeholder="Xabar yozing...">
+                        <button onclick="xabarYuborish()"><i class="fa-solid fa-arrow-up"></i></button>
+                        </div>
+                    </div>
+                    <div class="ikonka-input">
+                    </div>
+                </div>
+                <div class="katta2-yangi">
+                    <div class="sarlavha">
+                        <p class="rang">AI tahlil:</p>
+                        <button class="yangi-btn">85% mos</button>
+                    </div>
+                    <h1 class="rang">Stomatolog</h1>
+                    <p>Tish og'rig'i va jag' shishi — tish yoki milk kasalligi
+                        alomatlari bo'lishi mumkin. Keng qamrovli ko'rik talab
+                        etiladi.</p>
+                    <div class="pas">
+                        <p>Ehtimoliy holatlar:</p>
+                        <p>Tish kariesi</p>
+                        <p>Milk yallig'lanishi</p>
+                        <p>Jag' bo'g'imi muammosi</p>
+                    </div>
+                </div>
+            </section>
+            <div class="alohida">
+                <p>Tavsiya etilgan shifokorlar</p>
+                <div class="card">
+                    <div class="profile">
+                        <img src="mahluq.svg" alt="Dr. Kamolov">
+                        <div class="info">
+                            <h3>Dr. Kamolov S.</h3>
+                            <p>📅 Bugun 14:00</p>
+                        </div>
+                    </div>
+                    <button class="btn">Band qilish</button>
+                </div>
+
+                <div class="card">
+                    <div class="profile">
+                        <img src="Shifokor surati (1).svg" alt="Dr. Yusupova">
+                        <div class="info">
+                            <h3>Dr. Yusupova M.</h3>
+                            <p>📅 Ertaga 10:00</p>
+                        </div>
+                    </div>
+                    <button class="btn">Band qilish</button>
+                </div>
+            </div>
+            <section>
+                <div class="katta3">
+                    <h2><img src="./pilus.svg" alt="">Tez qo'shish:</h2>
+                    <div class="katta4">
+                        <button class="katta-btn">Bosh og'riq</button>
+                        <button class="katta-btn">Isitma</button>
+                        <button class="katta-btn">Yo'tal</button>
+                        <button class="katta-btn">Ko'z og'riq</button>
+                        <button class="katta-btn">Tish og'riq</button>
+                        <button class="katta-btn">Oshqozon</button>
+                        <button class="katta-btn">Teri muammosi</button>
+                        <button class="katta-btn">Bolalar</button>
+                    </div>
+                </div>
+            </section>
+            <section class="ota">
+                <div class="pain">
+                    <h1><img src="soat.svg" alt=""> Davomiyligi:</h1>
+                    <div class="inputlar">
+                        <p><input type="radio">Bugun</p>
+                        <p><input type="radio">2-3 kun</p>
+                        <p><input type="radio">Bir hafta</p>
+                        <p><input type="radio">Ko'proq</p>
+                    </div>
+                </div>
+                <div class="pain-box">
+                    <label>Og‘riq darajasi:</label>
+                    <input type="range" min="0" max="10" value="6" id="painRange">
+                    <div class="labels">
+                        <span>ENGIL</span>
+                        <span>O‘RTA</span>
+                        <span>KUCHLI</span>
+                    </div>
+                    <button class="result-btn" id="resultText">324 Fill × 45 Hug</button>
+                </div>
+            </section>
+            <div class="pastki">
+                <button class="pastki-btn">AI tahlil qilsin <img src="next.svg" alt=""></button>
+            </div>
+        </div>
+    </main>
+
+    <script src="tahlil.js"></script>
+</body>
+
+</html>

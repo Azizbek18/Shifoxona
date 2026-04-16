@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="kirish.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
 
             <label>Email</label>
             <div class="input-box">
-                <input type="email" placeholder="email@mail.com">
+                <input id="input" type="email" placeholder="email@mail.com">
             </div>
 
             <div class="password-row">
@@ -31,10 +32,10 @@
             </div>
 
             <div class="input-box">
-                <input type="password" placeholder="********">
+                <input id="pasvord" type="password" placeholder="********">
             </div>
 
-            <button class="btn">Kirish</button>
+            <button onclick="Yuborish()" class="btn">Kirish</button>
 
             <div class="divider">
                 <span>yoki</span>
