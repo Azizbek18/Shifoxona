@@ -374,7 +374,7 @@ body {
     position: fixed;
     top: 30px;
     left: 40px;
-    transform: translateX(400px);
+    transform: translateX(-400px);
     /* Dastlab ekrandan tashqarida bo'ladi */
     z-index: 9999;
     width: 350px;
