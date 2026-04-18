@@ -1,140 +1,155 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background: #f0f2f5;
+    overflow-x: hidden;
+    padding: 20px;
 }
 
-.container {
-    background: #fff;
-    padding: 30px;
-    width: 350px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.subtitle {
-    text-align: center;
-    color: gray;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-top: 12px;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #f1f1f1;
-    outline: none;
-}
-
-.gender {
-    display: flex;
-    gap: 15px;
-    margin-top: 5px;
-}
-
-button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(to right, #3b5bfd, #5a6dfc);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-.login-text {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.login-text a {
-    color: #3b5bfd;
-    text-decoration: none;
-    font-weight: bold;
-}
-.login{
-    text-align: center;
-}
-
-
-/* Xabarnoma uchun */
-.xabar-con{
+/* Fon Animatsiyasi */
+.bg-animate {
     position: fixed;
-    top: 30px;
-    right: 30px;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-.xabar{
-    width: 400px;
-    padding: 15px 20px;
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: move 20s infinite alternate linear;
+}
+
+.circle:nth-child(1) { width: 350px; height: 350px; background: #3b5bdb; top: -10%; left: -5%; }
+.circle:nth-child(2) { width: 300px; height: 300px; background: #00d2ff; bottom: -5%; right: -5%; }
+.circle:nth-child(3) { width: 200px; height: 200px; background: #748ffc; top: 30%; left: 30%; }
+
+@keyframes move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(50px, 80px); }
+}
+
+/* Asosiy Container */
+.container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+}
+
+.logo-circle {
+    width: 50px;
+    height: 50px;
+    background: #3b5bdb;
     color: white;
-    border-radius: 10px;
-    margin: 10px 0px;
-
-    animation: kirish 1s ease, chiqish 1s ease 2s forwards;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 26px;
+    font-weight: bold;
+    box-shadow: 0 8px 16px rgba(59, 91, 219, 0.3);
 }
+
+h2 { text-align: center; color: #1a1b23; margin-bottom: 5px; }
+.subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 20px; }
+
+label { display: block; margin-top: 12px; margin-bottom: 5px; font-size: 13px; font-weight: 600; color: #444; }
 
 input, select {
     width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #f1f1f1;
+    padding: 11px 15px;
+    border-radius: 10px;
+    border: 1.5px solid #e2e8f0;
+    background: rgba(255, 255, 255, 0.9);
     outline: none;
-    box-sizing: border-box; 
+    transition: 0.3s;
 }
 
-.error{
-    background-color: red;
-}
-.success{
-    background-color: rgb(0, 209, 0);
-}
-.info{
-    background-color: rgba(27, 48, 201, 0.694);
-}
-@keyframes kirish{
-    from{
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to{
-        transform: translateX(0%);
-        opacity: 1;
-    }
+input:focus, select:focus {
+    border-color: #3b5bdb;
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1);
 }
 
-@keyframes chiqish{
-    from{
-        transform: translateX(0%);
-        opacity: 1;
-    }
-    to{
-        transform: translateX(120%);
-        opacity: 0;
-    }
+.row { display: flex; gap: 10px; }
+.col { flex: 1; }
+
+button.reg-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+    border: none;
+    border-radius: 12px;
+    background: #3b5bdb;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button.reg-btn:hover { background: #2b47b3; transform: translateY(-1px); }
+
+.login { text-align: center; margin-top: 20px; font-size: 14px; color: #555; }
+.login a { color: #3b5bdb; text-decoration: none; font-weight: 600; }
+
+/* --- TOAST TIZIMI --- */
+.xabar-con {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.xabar {
+    position: relative;
+    min-width: 280px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    animation: slideIn 0.5s ease forwards, slideOut 0.5s ease 3.5s forwards;
+}
+
+.xabar::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; height: 4px; width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    animation: progress 3.5s linear forwards;
+}
+
+.error { background: #ff4757; }
+.success { background: #2ed573; }
+.info { background: #1e90ff; }
+
+@keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
+@keyframes progress { from { width: 100%; } to { width: 0%; } }
+
+@media (max-width: 320px) {
+    .container { padding: 20px 15px; }
+    .row { flex-direction: column; gap: 0; }
 }
