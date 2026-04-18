@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>navbat</title>
-    <!-- fontawesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MedBook - Navbat Holati</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="navbat.css">
 </head>
 
 <body>
-    <header>
+    <div id="toast-container"></div>
+
+    <div class="bg-blobs">
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <header class="glass-header">
         <div class="container">
             <div class="ikon">
-                <img src="./Icon (13).svg" alt="">
+                <img src="./Icon (13).svg" alt="logo">
                 <h1>MedBook</h1>
             </div>
             <ul>
-                <li><a href="">Asosiy</a></li>
-                <li><a href="">>Shifokorlar</a></li>
-                <li><a href="">Xizmatlar</a></li>
-                <li><a href="">Yordam</a></li>
+                <li><a href="#">Asosiy</a></li>
+                <li><a href="#" class="rang">Shifokorlar</a></li>
+                <li><a href="#">Xizmatlar</a></li>
+                <li><a href="#">Yordam</a></li>
             </ul>
-            <i class="fa-regular fa-bell"></i>
-            <img src="./Aziz T..svg" alt="">
+            <div class="header-right">
+                <i class="fa-regular fa-bell"></i>
+                <img src="./Aziz T..svg" alt="user" class="rasm">
+            </div>
         </div>
     </header>
-    <main>
+
+    <main class="content-wrapper">
         <div class="bitta">
             <h1>Navbat holati</h1>
             <p>Dr. Kamolov — Bugun, 14:00</p>
         </div>
-        <div class="queue-card">
-            <p class="label-top">SIZNING RAQAMINGIZ</p>
 
+        <div class="queue-card glass-3d" data-tilt data-tilt-max="5">
+            <p class="label-top">SIZNING RAQAMINGIZ</p>
             <div class="number-container">
                 <span class="main-number">7</span>
                 <p class="label-bottom">Navbat</p>
@@ -53,12 +60,12 @@
                 </div>
                 <div class="info-item">
                     <span class="info-label">TAXMINIY VAQT</span>
-                    <span class="info-value">14:23</span>
+                    <span id="timer-countdown" class="info-value">14:23</span>
                 </div>
             </div>
         </div>
-        </div>
-        <div class="container">
+
+        <div class="stepper-container">
             <div class="stepper">
                 <div class="step completed">✔</div>
                 <div class="step completed">✔</div>
@@ -69,42 +76,44 @@
                 </div>
                 <div class="step">5</div>
                 <div class="step">6</div>
-                <div class="step">7</div>
+                <div class="step current">7</div>
                 <div class="step">8</div>
                 <div class="step">9</div>
                 <div class="step">10</div>
             </div>
-            <div class="info-section">
-                <div class="card">
-                    <div class="icon-box">
-                        <img src="https://img.icons8.com/ios/50/0052cc/stethoscope.png" alt="icon">
-                    </div>
-                    <div class="text-content">
-                        <p class="label">HOZIRGI HOLAT:</p>
-                        <h3>4-raqamli bemor qabulda</h3>
-                        <p class="sub-text">Kutilayotgan vaqt: ~25 daqiqa</p>
-                    </div>
-                </div>
+        </div>
 
-                <div class="card">
-                    <div class="text-content">
-                        <p class="label">SMS ESLATMA OLISH:</p>
-                        <h3>+998 90 123 45 67</h3>
-                        <p class="sub-text">Sizga navbatga 10 daqiqa qolganda xabar yuboriladi</p>
-                    </div>
-                    <div class="toggle-switch">
-                        <input type="checkbox" id="sms-toggle" checked>
-                        <label for="sms-toggle"></label>
-                    </div>
+        <div class="info-section">
+            <div class="card glass">
+                <div class="icon-box">
+                    <img src="https://img.icons8.com/ios/50/0052cc/stethoscope.png" alt="icon">
+                </div>
+                <div class="text-content">
+                    <p class="label">HOZIRGI HOLAT:</p>
+                    <h3>4-raqamli bemor qabulda</h3>
+                    <p class="sub-text">Kutilayotgan vaqt: ~25 daqiqa</p>
+                </div>
+            </div>
+
+            <div class="card glass">
+                <div class="text-content">
+                    <p class="label">SMS ESLATMA OLISH:</p>
+                    <h3>+998 90 123 45 67</h3>
+                    <p class="sub-text">Sizga navbatga 10 daqiqa qolganda xabar yuboriladi</p>
+                </div>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="sms-toggle" checked>
+                    <label for="sms-toggle"></label>
                 </div>
             </div>
         </div>
+
         <div class="buttoncha">
-            <button class="exit-btn">Chiqib ketish (vaqtinchalik)</button>
+            <button class="exit-btn" id="btn-exit">Chiqib ketish (vaqtinchalik)</button>
         </div>
     </main>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="navbat.js"></script>
 </body>
 

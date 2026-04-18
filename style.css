@@ -1,209 +1,223 @@
-*{
-    box-sizing: border-box;
-}
-body{
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; transition: all 0.3s ease; }
+
+body {
     margin: 0;
-    background-color: #E2E8F0;
+    background-color: #F8FAFC;
+    overflow-x: hidden;
+    color: #1E293B;
 }
-.katta-ai{
-    display: flex;
-    justify-content: center;
-}
-.ai{
-    color: #2563EB;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-}
-.rang{
-    color: #2563EB;
-}
-.katta{
-    text-align: center;
-}
-.katta2{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-    border-radius: 10px;
-    width: 100%;
-    width: max-content;
-    padding: 20px;
-    width: 500px;
-}
-.katta2-katta{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.katta-input{
-    height: 100px;
-    width: 100%;
-    border-radius: 10px;
-    color: black;
-    border: none;
-    outline: none;
-}
-.katta-kirish{
-    background-color: #004AC6;
-    border-radius: 10px;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-}
-.katta-golos{
-    border-radius: 10px;
-    border: none;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    gap: 8px;
-    background-color: transparent;
-    width: 100%;
-}
-.katta-btn{
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-}
-.katta3{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 10px;
-}
-.katta-sarlavha{
+
+/* Fon effekti */
+.bg-blobs { position: fixed; inset: 0; z-index: -1; }
+.blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; }
+.blob:nth-child(1) { width: 400px; height: 400px; background: #3b82f6; top: -10%; left: -10%; }
+.blob:nth-child(2) { width: 300px; height: 300px; background: #60a5fa; bottom: -5%; right: -5%; }
+
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-.katta4{
-    width: 400px;
-    background-color: #EFF6FF;
-    padding: 20px;
-    border-radius: 10px;
+
+.billa { display: flex; align-items: center; gap: 10px; }
+.ikon { width: 32px; }
+.nav-links { display: flex; gap: 15px; }
+.nav-btn { text-decoration: none; padding: 10px 20px; border-radius: 10px; color: #475569; font-weight: 600; }
+.nav-btn.primary { background: #004AC6; color: white; }
+
+/* Hero */
+.katta-ai { display: flex; justify-content: center; margin-top: 40px; }
+.ai {
+    color: #2563EB;
+    background: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
-.katta4-katta{
+
+.katta { text-align: center; margin: 30px 0; }
+.katta h1 { font-size: 42px; margin-bottom: 10px; }
+.rang { color: #2563EB; }
+
+/* Input Card */
+.katta2-katta { display: flex; justify-content: center; padding: 0 20px; }
+.katta2 {
+    background: white;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 600px;
+    padding: 25px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #F1F5F9;
+}
+
+.katta-input {
+    width: 100%;
+    height: 100px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    resize: none;
+    margin-bottom: 20px;
+}
+
+.katta-golos {
+    background: #F8FAFC;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.katta-kirish {
+    background-color: #004AC6;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+    gap: 10px;
+    cursor: pointer;
 }
-.katta4-btn{
+
+.katta-kirish:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 74, 198, 0.2); }
+
+/* Suggestion Buttons */
+.katta3 { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+.katta-btn {
+    background: white;
+    border: 1px solid #E2E8F0;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.katta-btn:hover { border-color: #2563EB; color: #2563EB; }
+
+/* AI Result Card */
+.katta4-katta { display: flex; justify-content: center; margin-top: 40px; }
+.katta4 {
+    width: 100%;
+    max-width: 450px;
+    background-color: #EFF6FF;
+    padding: 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.katta-sarlavha { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 14px; opacity: 0.8; }
+.katta4-btn {
+    background: #FFFBEB;
     color: #D97706;
     width: 100%;
     border: none;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 20px 0;
     display: flex;
-    align-items: center;
     gap: 10px;
-    padding: 10px 20px;
-}
-.katta4-btn2{
-    border: 2px solid #004AC6;
-    background-color: transparent;
-    color: #004AC6;
-    padding: 10px 20px;
-    border-radius: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
-    margin-top: 8px;
-}
-.katta5{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin-top: 10px;
-}
-.katta6-btn{
-    padding: 10px 20px;
-    color: #004AC6;
-    border-radius: 10px;
-    background-color: white;
-    border: none;
-}
-.katta6-katta{
-    display: flex;
-    justify-content: center;
-    background-color: #F2F4F6;
-    text-align: center;
-}
-.katta6-xavfli{
-    background-color: #004AC6;
-    border-radius: 10px;
-    color: white;
-    padding: 20px;
-}
-.footer{
-    background-color: #EFF6FF;
-    margin-top: 10px;
-    display: flex;
-    text-align: center;
-}
-.ikon{
-    width: 20px;
-}
-.footer1{
-    gap: 10px;
-}
-.billa{
-    display: flex;
-}
-.ilova{
-    background-color: white;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    font-size: 12px;
 }
 
+.katta4-btn2 {
+    background: transparent;
+    border: 2px solid #004AC6;
+    color: #004AC6;
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* Stats */
+.katta5 { display: flex; justify-content: center; gap: 40px; margin-top: 50px; padding-bottom: 50px; }
+.katta5 p { display: flex; align-items: center; gap: 10px; font-weight: 600; color: #64748B; }
 
 @media(max-width:768px){
-    .katta{
-        text-align: center;
-    }
-    .katta2-katta{
-        width: 100%;
-    }
-    .katta3{
-        flex-direction: column;
-    }
-    .katta4-katta{
-        width: 100%;
-        text-align: center;
-    }
-    .katta5{
-        width: 100%;
-        padding: 20px;
-        text-align: center;
-    }
-    .katta6-katta{
-        flex-direction: column;
-        width: 100%;
-        padding: 20px;
-        text-align: center;
-    }
-    .katta-img img{
-        width: 100%;
-    }
-    .footer{
-        text-align: center;
-        flex-direction: column;
-        padding: 20px;
-    }
-    .billa{
-        display: flex;
-        justify-content: center;
-    }
+    .navbar { padding: 15px 5%; }
+    .nav-links { display: none; }
+    .katta h1 { font-size: 28px; }
+    .katta5 { flex-direction: column; align-items: center; gap: 20px; }
+}
+
+/* --- TOAST TIZIMI --- */
+.xabar-con {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.xabar {
+    position: relative;
+    min-width: 320px;
+    padding: 16px 25px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: #fff; /* Default */
+    animation: slideIn 0.5s ease forwards, slideOut 0.5s ease 3.5s forwards;
+}
+
+/* Progress bar (pastdagi chiziq) */
+.xabar::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    animation: progress 3.5s linear forwards;
+}
+
+/* Xabarnoma turlari */
+.error { background: #ef4444; }
+.success { background: #22c55e; }
+.info { background: #3b82f6; }
+
+/* Animatsiyalar */
+@keyframes slideIn {
+    from { transform: translateX(120%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(120%); opacity: 0; }
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
 }

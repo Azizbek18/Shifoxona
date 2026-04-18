@@ -1,59 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tibbiy</title>
-    <!-- fontawesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MedBook - Tibbiy Tarix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="Tibbiy.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
-        <header>
+    <div id="toast-container"></div>
+    <header class="glass-header">
         <div class="container">
             <div class="ikon">
-                <img src="./Icon (13).svg" alt="">
+                <img src="./Icon (13).svg" alt="logo">
                 <h1>MedBook</h1>
             </div>
-            <ul>
-                <li><a href="">Asosiy</a></li>
-                <li><a href="">>Shifokorlar</a></li>
-                <li><a href="">Xizmatlar</a></li>
-                <li><a href="">Yordam</a></li>
+            <ul class="nav-menu">
+                <li><a href="#">Asosiy</a></li>
+                <li><a href="#" class="rang">Shifokorlar</a></li>
+                <li><a href="#">Xizmatlar</a></li>
+                <li><a href="#">Yordam</a></li>
             </ul>
-            <i class="fa-regular fa-bell"></i>
-            <img src="./Aziz T..svg" alt="">
+            <div class="header-right">
+                <i class="fa-regular fa-bell"></i>
+                <img src="./Aziz T..svg" alt="user" class="rasm">
+            </div>
         </div>
     </header>
-    <main>
-        <section>
-            <div class="sarlavha">
-                <h1>Tibbiy tarix</h1>
-                <p>Barcha tibbiy ko'riklar, tahlil natijalari va tayinlangan dori-darmonlarning to'liq arxivi.</p>
+
+    <main class="content-wrapper">
+        <section class="sarlavha">
+            <h1>Tibbiy tarix</h1>
+            <p>Barcha tibbiy ko'riklar, tahlil natijalari va tayinlangan dori-darmonlarning to'liq arxivi.</p>
+        </section>
+
+        <section class="filters-section">
+            <div class="buttonlar">
+                <button class="btn">Hammasi</button>
+                <button class="button">Qabullar</button>
+                <button class="button">Tahlillar</button>
+                <button class="button">Dorilar</button>
             </div>
         </section>
-        <section>
-            <div class="container">
-                <div class="buttonlar">
-                    <button class="btn">Hammasi</button>
-                    <button class="button">Qabullar</button>
-                    <button class="button">Tahlillar</button>
-                    <button class="button">Dorilar</button>
+
+        <section class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span>24 MART</span>
+                    <small>2026</small>
                 </div>
-            </div>
-        </section>
-        <section class="kattaroq">
-            <div class="container">
-                <div class="card">
+                <div class="timeline-marker marker-blue"></div>
+                <div class="card glass-card">
                     <div class="card-header">
-                        <div class="card-kichik">
+                        <div class="card-info">
                             <h3 class="doctor-name">Dr. Kamolov — Stomatolog</h3>
-                            <p class="location">Markaziy Stomatologiya Klinikasi</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> Markaziy Stomatologiya
+                                Klinikasi</p>
                         </div>
                         <span class="status status-blue">KO'RIK YAKUNLANDI</span>
                     </div>
@@ -67,19 +74,26 @@
                             <p class="value">Amoxicillin 500mg — 7 kun</p>
                         </div>
                     </div>
-                    <a href="#" class="link-btn">Batafsil &rarr;</a>
+                    <a href="#" class="link-btn">Batafsil <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
+            </div>
 
-                <div class="card">
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span>18 MART</span>
+                    <small>2026</small>
+                </div>
+                <div class="timeline-marker marker-green"></div>
+                <div class="card glass-card">
                     <div class="card-header">
-                        <div>
+                        <div class="card-info">
                             <h3 class="doctor-name">Qon tahlili natijalari</h3>
-                            <p class="location">Labo-Expert Analitika</p>
+                            <p class="location"><i class="fa-solid fa-flask"></i> Labo-Expert Analitika</p>
                         </div>
                         <span class="status status-green">TAYYOR</span>
                     </div>
                     <div class="result-box">
-                        <div>
+                        <div class="res-info">
                             <p class="label-sm">Asosiy ko'rsatkich</p>
                             <p class="value-lg">Gemoglobin</p>
                         </div>
@@ -88,12 +102,22 @@
                             <span class="norma">NORMA</span>
                         </div>
                     </div>
-                    <a href="#" class="link-btn">Natijani ko'rish</a>
+                    <a href="#" class="link-btn">Natijani ko'rish <i class="fa-solid fa-eye"></i></a>
                 </div>
+            </div>
 
-                <div class="card">
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span>10 MART</span>
+                    <small>2026</small>
+                </div>
+                <div class="timeline-marker marker-blue"></div>
+                <div class="card glass-card">
                     <div class="card-header">
-                        <h3 class="doctor-name">Dr. Toshmatov — Terapevt</h3>
+                        <div class="card-info">
+                            <h3 class="doctor-name">Dr. Toshmatov — Terapevt</h3>
+                            <p class="location"><i class="fa-solid fa-hospital"></i> Oilaviy Poliklinika №4</p>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="info-group">
@@ -107,12 +131,21 @@
                     </div>
                     <div class="card-footer">
                         <span>Qayta ko'rik: 17 Mart</span>
+                        <i class="fa-solid fa-print"></i>
                     </div>
                 </div>
             </div>
         </section>
 
+        <div class="load-more">
+            <p>Ko'proq yuklash</p>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
     </main>
+
+    <div class="floating-add">
+        <i class="fa-solid fa-plus"></i>
+    </div>
 
     <script src="tibbiy.js"></script>
 </body>

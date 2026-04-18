@@ -1,74 +1,95 @@
-let qism1 = "3FYQA9MNnN2sGoO9mY5LcQW4B0C"
-let qism2 = "gsk_7UUEaFevcNmn42NSUKaVWGdyb"
-let token = qism1 + qism2
-let xotira = [
-  {
-    role: "system",
-    content: `Sen tibbiy maslahatchi AI san. 
-        Javobingni quyidagi tartibda ber:
-        1. 3-4 qatorli qisqa tahlil.
-        2. Ehtimoliy 3 ta kasallik nomini ro'yxat (bullet points) ko'rinishida yoz.
-        3. Qisqa tavsiya.
-        Javobing aniq, qisqa va o'zbek tilida bo'lsin.`,
-  },
-];
-let yubor = document.getElementById("yubor");
-yubor.addEventListener("click", (e) => {
-  e.preventDefault();
-  const shikoyat = textarea.value.trim();
-  if (shikoyat === "") return;
+// 1. GLOBAL ELEMENTLAR
+const xabarCon = document.querySelector(".xabar-con");
+const mainInput = document.querySelector(".katta-input");
+const findBtn = document.querySelector(".katta-kirish");
+const voiceBtn = document.querySelector(".katta-golos");
+const counters = document.querySelectorAll(".num");
 
-  const radio = document.querySelector('input[type="radio"]:checked');
-  const davomiylik = radio
-    ? radio.parentElement.textContent.trim()
-    : "Noma'lum";
-  const sorov = `Shikoyatim: ${shikoyat}. Davomiyligi: ${davomiylik}. Og'riq darajasi:/10. Qisqa tahlil ber (4-5 qator).`;
+// 2. TOAST FUNKSIYASI
+function xabarnoma(xabar, turi) {
+    const xabarDiv = document.createElement('div');
+    xabarDiv.className = `xabar ${turi}`;
+    xabarDiv.innerText = xabar;
+    xabarCon.appendChild(xabarDiv);
+    setTimeout(() => { if (xabarDiv) xabarDiv.remove(); }, 4000);
+}
 
-  xotira.push({ role: "user", content: sorov });
+// 3. OVOZLI QIDIRUV (Web Speech API)
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  // 2. API ga so'rov
-  fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
-      messages: xotira,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      let xabarAI = data.choices[0].message.content;
-      let chiroyli = marked.parse(xabarAI);
+if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'uz-UZ'; // O'zbek tili uchun (yoki 'ru-RU' / 'en-US')
+    recognition.interimResults = false;
 
-      natijaOynasi.innerHTML = `
-            <div class="sarlavha">
-                <p class="rang">AI tahlil:</p>
-                <button class="yangi-btn">Tayyor</button>
-            </div>
-            <div class="natija-matni">${chiroyli}</div>
-        `;
-      xotira.push({ role: "assistant", content: xabarAI });
-    })
-    .catch((error) => {
-      console.error("Xatolik:", error);
-      natijaOynasi.innerHTML = `<p style="color:red;">Xatolik yuz berdi. Internetni tekshiring.</p>`;
+    voiceBtn.addEventListener('click', () => {
+        recognition.start();
+        voiceBtn.style.background = "#ffeded";
+        voiceBtn.innerHTML = `<img src="./golos.svg" style="animation: pulse 1s infinite"> Eshitilmoqda...`;
+        xabarnoma("Sizni eshityapman, gapiring...", "info");
     });
-});
 
-const textarea = document.getElementById("textarea");
-const buttons = document.querySelectorAll(".katta-btn");
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const buttonText = button.textContent.trim();
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        mainInput.value = transcript;
+        voiceBtn.style.background = "transparent";
+        voiceBtn.innerHTML = `<img src="./golos.svg"> Ovoz bilan aytish`;
+        xabarnoma("Ovoz matnga aylantirildi!", "success");
+    };
 
-    if (textarea.value.length > 0) {
-      textarea.value += ", " + buttonText;
-    } else {
-      textarea.value = buttonText;
+    recognition.onerror = () => {
+        voiceBtn.style.background = "transparent";
+        voiceBtn.innerHTML = `<img src="./golos.svg"> Ovoz bilan aytish`;
+        xabarnoma("Ovozni aniqlashda xatolik yuz berdi", "error");
+    };
+
+    recognition.onend = () => {
+        voiceBtn.style.background = "transparent";
+        voiceBtn.innerHTML = `<img src="./golos.svg"> Ovoz bilan aytish`;
+    };
+} else {
+    voiceBtn.addEventListener('click', () => {
+        xabarnoma("Brauzeringiz ovozli qidiruvni qo'llab-quvvatlamaydi", "error");
+    });
+}
+
+findBtn.addEventListener('click', () => {
+    const text = mainInput.value.trim();
+    if (text === "") {
+        xabarnoma("Iltimos, avval shikoyatingizni yozing!", "info");
+        return;
     }
-    button.disabled = true;
-  });
+
+    findBtn.disabled = true;
+    findBtn.innerText = "AI tahlil qilmoqda...";
+    
+    setTimeout(() => {
+        findBtn.disabled = false;
+        findBtn.innerHTML = 'Shifokor toping <img src="./next.svg">';
+        document.querySelector('.katta4-katta').scrollIntoView({ behavior: 'smooth' });
+        xabarnoma("Sizga mos shifokor topildi!", "success");
+    }, 2000);
 });
+
+function runCounter() {
+    counters.forEach(counter => {
+        const target = +counter.innerText;
+        let count = 0;
+        const updateCount = () => {
+            if (count < target) {
+                count += target / 100;
+                counter.innerText = Math.ceil(count);
+                setTimeout(updateCount, 20);
+            } else { counter.innerText = target; }
+        };
+        updateCount();
+    });
+}
+
+if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll(".katta2, .katta4"), {
+        max: 5, speed: 400, glare: true, "max-glare": 0.1
+    });
+}
+
+window.onload = runCounter;

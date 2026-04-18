@@ -9,14 +9,25 @@ body {
     background: #f5f6f8;
 }
 
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
-.navbar {
+.navbar{
+    background-color: white;
+}
+
+.navbar .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    background: white;
     border-bottom: 1px solid #ddd;
+}
+
+nav {
+    display: flex;
 }
 
 .logo {
@@ -76,11 +87,16 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
-.qidiruv-box input {
-    width: 600px;
+.input {
+    max-width: 500px;
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     border-radius: 6px;
+    outline: none;
+}
+.input:focus{
+    border: 2px solid rgba(0, 0, 0, 0.422);
 }
 
 .tozala {
@@ -102,10 +118,7 @@ body {
     color: white;
 }
 
-.container {
-   width:  900px;
-    margin: auto;
-}
+
 
 
 .card {
@@ -183,85 +196,109 @@ button:hover {
 }
 
 .steps {
-  text-align: center;
-  padding: 50px 20px;
+    text-align: center;
+    padding: 50px 20px;
 }
 
 .steps h2 {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .steps-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
 .step {
-  max-width: 200px;
+    max-width: 200px;
 }
 
 .icon {
-  width: 60px;
-  height: 60px;
-  background: #eef1f7;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  font-size: 24px;
+    width: 60px;
+    height: 60px;
+    background: #eef1f7;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 24px;
 }
 
 .step h3 {
-  margin-top: 15px;
-  margin-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .step p {
-  font-size: 14px;
-  color: gray;
+    font-size: 14px;
+    color: gray;
 }
 
 .line {
-  width: 80px;
-  height: 2px;
-  background: #ddd;
+    width: 80px;
+    height: 2px;
+    background: #ddd;
 }
 
 .footer {
-  background: #fff;
-  padding: 40px 20px;
-  margin-top: 50px;
+    background: #fff;
+    padding: 40px 20px;
+    margin-top: 50px;
 }
 
 .footer-container {
-  max-width: 1000px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.col h3, .col h4 {
-  margin-bottom: 10px;
+.col h3,
+.col h4 {
+    margin-bottom: 10px;
 }
 
 .col p {
-  margin: 5px 0;
-  color: gray;
-  font-size: 14px;
+    margin: 5px 0;
+    color: gray;
+    font-size: 14px;
 }
 
 .icons {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .bottom {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 13px;
-  color: gray;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 13px;
+    color: gray;
+}
+
+@media(max-width:768px) {
+    .qidiruv-box {
+        flex-direction: column;
+    }
+
+    .input {
+        width: 100%;
+        margin: 15px 0px;
+    }
+    .container{
+        width: 100%;
+    }
+    .sec1{
+        padding: 20px;
+    }
+    nav{
+        display: none;
+    }
+    .steps-container{
+        flex-direction: column;
+    }
 }

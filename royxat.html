@@ -1,46 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MedBook - Ro'yxatdan o'tish</title>
     <link rel="stylesheet" href="royxat.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 </head>
-
 <body>
-    <div class="container">
+    <div class="bg-animate">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <div class="xabar-con"></div>
+    
+    <div class="container" data-tilt data-tilt-max="5" data-tilt-glare data-tilt-max-glare="0.1">
+        <div class="logo-circle">+</div>
         <h2>Ro'yxatdan o'tish</h2>
         <p class="subtitle">Sog'lig'ingiz bizga muhim</p>
 
-        <form>
+        <form id="regForm">
             <label>To'liq ism</label>
-            <input type="text" placeholder="Ismingizni kiriting">
+            <input id="ism" type="text" placeholder="Ismingizni kiriting">
 
-            <label>Telefon</label>
-            <input type="text" placeholder="+998 90 123 45 67">
-
-            <label>Tug'ilgan sana</label>
-            <input type="text" placeholder="KK.OO.YYYY">
+            <div class="row">
+                <div class="col">
+                    <label>Telefon</label>
+                    <input id="tel" type="text" placeholder="+998 90 123 45 67">
+                </div>
+                <div class="col">
+                    <label>Tug'ilgan sana</label>
+                    <input id="sana" type="date">
+                </div>
+            </div>
 
             <label>Jinsi</label>
-                <div class="gender">
-                    <label><input type="radio" name="gender"> Erkak</label>
-                    <label><input type="radio" name="gender"> Ayol</label>
-                </div>
+            <select id="jinsi">
+                <option value="" disabled selected>Tanlang</option>
+                <option value="erkak">Erkak</option>
+                <option value="ayol">Ayol</option>
+            </select>
 
             <label>Email</label>
-            <input type="email" placeholder="example@mail.com">
+            <input id="email" type="email" placeholder="example@mail.com">
 
             <label>Parol</label>
-            <input type="password" placeholder="********">
+            <input id="parol" type="password" placeholder="********">
 
-            <button type="submit">Hisob yaratish</button>
+            <button type="button" onclick="Kirish()" class="reg-btn">Hisob yaratish</button>
         </form>
 
-        <p class="login">Hisobingiz bormi? <a href="#">Kiring</a></p>
+        <p class="login">Hisobingiz bormi? <a href="./kirish.html">Kiring</a></p>
     </div>
-    <script src="./royxat.js"></script>
-</body>
 
+    <script src="./royhat.js"></script>
+</body>
 </html>

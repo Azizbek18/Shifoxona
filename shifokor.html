@@ -1,210 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MedBook - Shifokor Profili</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="shifokor.css">
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="logo">
-            <img class="icon" src="./Container.svg" alt="">
-            <span class="text">MedBook</span>
-        </div>
+    <div class="toast-container"></div>
 
-        <nav class="menu">
-            <a href="#">Asosiy</a>
-            <a href="#" class="active">Shifokorlar</a>
-            <a href="#">Xizmatlar</a>
-            <a href="#">Yordam</a>
-        </nav>
-
-        <div class="right">
-            <span class="bell">🔔</span>
-            <a href="#" class="login">Kirish</a>
-            <a href="#" class="signup">Ro'yxatdan o'tish</a>
-        </div>
-    </header>
-    <div class="patki">
-        <p> <img src="./Icon.svg" alt="">Shifokorlar ro'yxatiga qaytish</p>
+    <div class="bg-blobs">
+        <div class="blob"></div>
+        <div class="blob"></div>
     </div>
 
-    <div class="container">
-        <aside class="profile-card">
-            <div class="profile-header">
-                <div class="avatar">SK</div>
-                <h2 class="doctor-name">Dr. Sardor Kamolov</h2>
-                <span class="specialty">Stomatolog</span>
+    <header class="navbar glass">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="./Container.svg" alt="Logo">
+                <span>MedBook</span>
+            </div>
+            <nav class="menu">
+                <a href="#">Asosiy</a>
+                <a href="#" class="active">Shifokorlar</a>
+                <a href="#">Xizmatlar</a>
+                <a href="#">Yordam</a>
+            </nav>
+            <div class="right">
+                <i class="fa-regular fa-bell bell-icon"></i>
+                <a href="#" class="login">Kirish</a>
+                <a href="#" class="signup">Ro'yxatdan o'tish</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="back-link">
+        <div class="max-width">
+            <a href="#"><i class="fa-solid fa-arrow-left"></i> Shifokorlar ro'yxatiga qaytish</a>
+        </div>
+    </div>
+
+    <div class="main-layout max-width">
+        <aside class="profile-card glass" data-tilt>
+            <div class="profile-main">
+                <div class="avatar-box" id="docAvatar">SK</div>
+                <h2 id="docName">Dr. Sardor Kamolov</h2>
+                <span class="specialty-tag" id="docSpecialty">STOMATOLOG</span>
             </div>
 
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-value"><i class="fas fa-star"></i> 4.9</span>
-                    <span class="stat-label">Reyting</span>
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="val"><i class="fa-solid fa-star"></i> <span id="rating">4.9</span></span>
+                    <span class="lab">Reyting</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-value">218</span>
-                    <span class="stat-label">Sharh</span>
+                <div class="stat">
+                    <span class="val" id="reviewsCount">218</span>
+                    <span class="lab">Sharh</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-value">8 yil</span>
-                    <span class="stat-label">Tajriba</span>
-                </div>
-            </div>
-
-            <div class="info-list">
-                <div class="info-item">
-                    <i class="fas fa-hospital"></i>
-                    <div>
-                        <p class="label">Klinika</p>
-                        <p class="value">MedCenter 1</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <p class="label">Manzil</p>
-                        <p class="value">Yunusobod, 5-mavze</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <p class="label">Ish vaqti</p>
-                        <p class="value">Du-Ju, 09:00-18:00</p>
-                    </div>
+                <div class="stat">
+                    <span class="val" id="experience">8 yil</span>
+                    <span class="lab">Tajriba</span>
                 </div>
             </div>
 
-            <div class="reviews-section">
+            <div class="details-list">
+                <div class="det-item">
+                    <i class="fa-solid fa-hospital"></i>
+                    <div>
+                        <p class="lab">Klinika</p>
+                        <p class="val" id="clinicName">MedCenter 1</p>
+                    </div>
+                </div>
+                <div class="det-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <p class="lab">Manzil</p>
+                        <p class="val" id="address">Yunusobod, 5-mavze</p>
+                    </div>
+                </div>
+                <div class="det-item">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <div>
+                        <p class="lab">Muloqot tillari</p>
+                        <p class="val">O'zbek, Rus</p>
+                    </div>
+                </div>
+                <div class="det-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <p class="lab">Ish vaqti</p>
+                        <p class="val">Du-Ju, 09:00-18:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-mini">
                 <h3>Sharhlar</h3>
-                <div class="review-box">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text">"Juda yaxshi shifokor, ishingizga baraka."</p>
-                    <span class="review-author">— Aziz T.</span>
+                <div class="rev-card">
+                    <div class="stars">★★★★★ <span class="time">2 kun avval</span></div>
+                    <p>"Juda yaxshi shifokor, ishingizga baraka."</p>
+                    <span class="author">— Aziz T.</span>
                 </div>
-                <a href="#" class="view-all">Barcha 218 sharhni ko'rish</a>
+                <a href="#" class="all-reviews">Barcha sharhlarni ko'rish</a>
             </div>
         </aside>
 
-        <main class="booking-card">
-            <section class="calendar-section">
+        <div class="booking-side">
+            <section class="booking-card glass">
                 <h2>Qabul vaqtini tanlang</h2>
-                <div class="calendar-header">
-                    <button class="nav-btn"><i class="fas fa-chevron-left"></i></button>
-                    <span class="month">Mart 2026</span>
-                    <button class="nav-btn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="days-grid">
-                    <div class="day-item disabled"><span>Du</span><strong>26</strong></div>
-                    <div class="day-item disabled"><span>Se</span><strong>27</strong></div>
-                    <div class="day-item active"><span>Ch</span><strong>28</strong></div>
-                    <div class="day-item"><span>Pa</span><strong>29</strong></div>
-                    <div class="day-item"><span>Ju</span><strong>30</strong></div>
-                    <div class="day-item"><span>Sh</span><strong>31</strong></div>
-                    <div class="day-item"><span>Ya</span><strong>1</strong></div>
-                </div>
-            </section>
 
-            <section class="time-section">
-                <div class="time-grid">
-                    <button class="time-btn">09:00</button>
-                    <button class="time-btn">09:30</button>
-                    <button class="time-btn disabled" disabled>10:00</button>
-                    <button class="time-btn">11:00</button>
-                    <button class="time-btn selected">14:00</button>
-                    <button class="time-btn">14:30</button>
-                    <button class="time-btn">15:00</button>
-                    <button class="time-btn disabled" disabled>16:00</button>
+                <div class="calendar-nav">
+                    <button class="cal-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span class="current-month">Mart 2026</span>
+                    <button class="cal-btn"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
-            </section>
 
-            <section class="visit-type">
-                <p class="section-title">Tashrif turi</p>
-                <div class="options-grid">
-                    <label class="option selected">
-                        <input type="radio" name="type" checked>
-                        <span>Klinikaga borish</span>
-                    </label>
-                    <label class="option">
-                        <input type="radio" name="type">
-                        <div class="option-text">
-                            <span>Uy chaqiruvi</span>
-                            <small>+20,000 so'm</small>
+                <div class="days-row" id="daysGrid">
+                </div>
+
+                <div class="time-slots" id="timeGrid">
+                </div>
+
+                <div class="visit-options">
+                    <p class="section-title">Tashrif turi</p>
+                    <div class="opt-grid">
+                        <div class="opt-card active" data-type="clinic">
+                            <div class="radio-circle"></div>
+                            <span>Klinikaga borish</span>
                         </div>
-                    </label>
+                        <div class="opt-card" data-type="home">
+                            <div class="radio-circle"></div>
+                            <div class="opt-info">
+                                <span>Uy chaqiruvi</span>
+                                <small>+20,000 so'm</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="complaint-box">
+                    <p class="section-title">Shikoyatingiz (ixtiyoriy)</p>
+                    <textarea id="complaintInput" placeholder="Shikoyatingizni yozing (ixtiyoriy)..."></textarea>
+                </div>
+
+                <div class="booking-footer">
+                    <div class="price-box">
+                        <span class="lab">To'lov miqdori</span>
+                        <p class="total-price">80,000 <span>so'm</span></p>
+                    </div>
+                    <button id="yubor" class="submit-btn">Qabulga yozilish</button>
                 </div>
             </section>
 
-            <section class="complaint">
-                <p class="section-title">Shikoyatingiz (ixtiyoriy)</p>
-                <textarea placeholder="Shikoyatingizni yozing..."></textarea>
-            </section>
+            <section class="info-details-card glass">
+                <h3>Shifokor haqida ma'lumot</h3>
+                <p id="fullBio">Dr. Sardor Kamolov — 8 yillik tajribaga ega malakali stomatolog-terapevt. U o'z
+                    faoliyatida zamonaviy davolash usullari va yuqori sifatli materiallardan foydalanadi.</p>
 
-            <footer class="booking-footer">
-                <div class="price-info">
-                    <span class="price-label">To'lov miqdori</span>
-                    <p class="price-value">80,000 <span>SO'M</span></p>
-                </div>
-                <button class="submit-btn">Qabulga yozilish</button>
-            </footer>
-        </main>
-    </div>
-    <section class="doctor-info">
-        <div class="container">
-            <div class="info-card">
-                <h2>Shifokor haqida ma'lumot</h2>
-                <p>
-                    Dr. Sardor Kamolov — 8 yillik tajribaga ega malakali stomatolog-terapevt. U o'z faoliyatida
-                    zamonaviy davolash usullari va yuqori sifatli materiallardan foydalanadi. Asosiy ixtisoslashuvi:
-                    tishlarni og'riqsiz davolash, tish kanallarini tozalash va restavratsiya qilish.
-                </p>
-                <p>
-                    Klinikada eng so'nggi rusumdagi uskunalar o'rnatilgan bo'lib, har bir bemorga individual yondashuv
-                    kafolatlanadi.
-                </p>
-
-                <div class="features">
-                    <div class="feature-item">
-                        <span class="material-symbols-outlined">SERTIFIKAT</span>
+                <div class="features-grid">
+                    <div class="feat-item"><i class="fa-solid fa-certificate"></i>
                         <p>SERTIFIKAT</p>
                     </div>
-                    <div class="feature-item">
-                        <span class="material-symbols-outlined">DIPLOM</span>
+                    <div class="feat-item"><i class="fa-solid fa-graduation-cap"></i>
                         <p>DIPLOM</p>
                     </div>
-                    <div class="feature-item">
-                        <span class="material-symbols-outlined">LABORATORIYA</span>
+                    <div class="feat-item"><i class="fa-solid fa-microscope"></i>
                         <p>LABORATORIYA</p>
                     </div>
-                    <div class="feature-item">
-                        <span class="material-symbols-outlined">XAVFSIZLIK</span>
+                    <div class="feat-item"><i class="fa-solid fa-shield-halved"></i>
                         <p>XAVFSIZLIK</p>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <div class="footer-container">
-            <div class="logo">
-                <strong>MedBook</strong>
-            </div>
-            <nav class="footer-nav">
+    <footer class="main-footer">
+        <div class="max-width footer-inner">
+            <div class="f-logo">MedBook</div>
+            <nav class="f-nav">
                 <a href="#">Maxfiylik siyosati</a>
                 <a href="#">Foydalanish shartlari</a>
                 <a href="#">Kontaktlar</a>
             </nav>
-            <div class="copyright">
-                © 2026 MedBook. Barcha huquqlar himoyalangan.
-            </div>
+            <div class="copy">© 2026 MedBook. Barcha huquqlar himoyalangan.</div>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="shifokor.js"></script>
 </body>
 
 </html>
