@@ -1,104 +1,131 @@
 * {
     box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-body {
     margin: 0;
-    background-color: #F7F9FB;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
 }
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: #f0f2f5;
+}
+
+/* Fon dizayni */
+.bg-animate {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: #f4f7fc;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: move 15s infinite alternate linear;
+}
+
+.circle:nth-child(1) { width: 350px; height: 350px; background: #3b5bdb; top: -5%; left: -5%; }
+.circle:nth-child(2) { width: 300px; height: 300px; background: #00d2ff; bottom: 5%; right: -5%; animation-delay: -2s; }
+.circle:nth-child(3) { width: 200px; height: 200px; background: #748ffc; top: 35%; left: 40%; }
+
+@keyframes move {
+    from { transform: translate(0, 0); }
+    to { transform: translate(40px, 80px); }
+}
+
+/* Sarlavha */
 .tepa {
     text-align: center;
+    padding: 30px 20px 0;
 }
+
 .tepah1 {
     color: #004AC6;
+    font-size: clamp(26px, 10vw, 42px);
     margin: 0;
 }
 
 .tepaP {
-    color: #434655;
-    font-size: 20px;
-    
+    color: #555;
+    font-size: clamp(14px, 4vw, 17px);
+    margin-top: 5px;
 }
 
+/* Login Box */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:80vh;
+    flex: 1;
+    padding: 20px;
 }
 
 .login-box {
-    background: #fff;
-    padding: 30px;
-    width: 320px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: clamp(20px, 6vw, 35px);
+    width: 100%;
+    max-width: 380px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transform-style: preserve-3d;
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto 10px;
-    background: #e9efff;
-    color: #3b5bdb;
+    width: 50px;
+    height: 50px;
+    background: #3b5bdb;
+    color: white;
+    margin: 0 auto 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
-    font-size: 20px;
+    border-radius: 12px;
+    font-size: 26px;
+    font-weight: bold;
+    transform: translateZ(30px);
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 5px;
-}
+h2 { text-align: center; font-size: 24px; color: #222; margin-bottom: 5px; }
+.subtitle { text-align: center; color: #777; margin-bottom: 25px; font-size: 14px; }
 
-.subtitle {
-    text-align: center;
-    color: #777;
-    margin-bottom: 20px;
-}
-
-label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.input-box {
-    margin-bottom: 15px;
-}
+label { font-size: 13px; font-weight: 600; color: #444; margin-bottom: 6px; display: block; }
+.input-box { margin-bottom: 15px; }
 
 .input-box input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 12px 16px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
     outline: none;
+    transition: 0.3s;
 }
 
-.password-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-}
-
-.password-row a {
-    color: #3b5bdb;
-    text-decoration: none;
+.input-box input:focus {
+    border-color: #3b5bdb;
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1);
 }
 
 .btn {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background: #3b5bdb;
-    color: #fff;
+    color: white;
     border: none;
-    border-radius: 6px;
-
-    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
 }
+
+.btn:hover { background: #2b47b3; transform: translateY(-1px); }
 
 .divider {
     text-align: center;
@@ -106,90 +133,93 @@ label {
     position: relative;
 }
 
-.divider span {
-    background: #fff;
-    padding: 0 10px;
-    color: #999;
-}
-
 .divider::before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: #ddd;
-    z-index: -1;
+    top: 50%; left: 0; width: 100%; height: 1px; background: #ddd;
+}
+
+.divider span {
+    background: #fdfdfd;
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+    color: #999;
+    font-size: 13px;
 }
 
 .google-btn {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background: #fff;
-    cursor: pointer;
-}
-
-.signup {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.signup a {
-    color: #3b5bdb;
-    text-decoration: none;
-}
-
-.xabar-con{
-    position: fixed;
-    top: 30px;
-    right: 30px;
-}
-
-.xabar{
-    width: 400px;
-    padding: 15px 20px;
-    color: white;
+    padding: 12px;
+    border: 1.5px solid #e0e0e0;
     border-radius: 10px;
-    margin: 10px 0px;
-
-    animation: kirish 1s ease, chiqish 1s ease 2s forwards;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
+.signup { text-align: center; margin-top: 20px; font-size: 14px; color: #555; }
+.signup a { color: #3b5bdb; text-decoration: none; font-weight: 600; }
 
-
-.error{
-    background-color: red;
-}
-.success{
-    background-color: rgb(0, 209, 0);
-}
-.info{
-    background-color: skyblue;
-}
-@keyframes kirish{
-    from{
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to{
-        transform: translateX(0%);
-        opacity: 1;
-    }
+/* --- TOAST TIZIMI (Progress bar bilan) --- */
+.xabar-con {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-@keyframes chiqish{
-    from{
-        transform: translateX(0%);
-        opacity: 1;
-    }
-    to{
-        transform: translateX(120%);
-        opacity: 0;
-    }
+.xabar {
+    position: relative;
+    min-width: 280px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    animation: slideIn 0.5s ease forwards, slideOut 0.5s ease 3.5s forwards;
 }
 
+.xabar::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    animation: progress 3.5s linear forwards;
+}
 
+.error { background: #ff4757; }
+.success { background: #2ed573; }
+.info { background: #1e90ff; }
+
+@keyframes slideIn {
+    from { transform: translateX(120%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(120%); opacity: 0; }
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+@media (max-width: 320px) {
+    .login-box { padding: 15px; }
+    .xabar { min-width: 240px; font-size: 13px; }
+}

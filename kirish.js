@@ -1,48 +1,78 @@
-let supabaseKey = 'sb_publishable_qguz__gQ8NQiED350KJ6ZA_PTj-pMZ2'
-let supaBaseUrl = 'https://yzucexsnhdaicnrkztrj.supabase.co '
+// Supabase sozlamalari
+const supabaseKey = 'sb_publishable_qguz__gQ8NQiED350KJ6ZA_PTj-pMZ2';
+const supaBaseUrl = 'https://yzucexsnhdaicnrkztrj.supabase.co';
 
-const _supabase = supabase.createClient(supaBaseUrl, supabaseKey)
+const _supabase = supabase.createClient(supaBaseUrl, supabaseKey);
 
-const xabarCon = document.querySelector(".xabar-con")
+const xabarCon = document.querySelector(".xabar-con");
+
+// Mukammal Toast Funksiyasi
 function xabarnoma(xabar, turi) {
-    let xabarMatn = document.createElement('div');
-    xabarMatn.classList.add("xabar", turi)
-    console.log(xabarMatn);
+    const xabarDiv = document.createElement('div');
+    xabarDiv.className = `xabar ${turi}`;
+    xabarDiv.innerText = xabar;
 
-    xabarMatn.innerText = xabar;
+    xabarCon.appendChild(xabarDiv);
 
+    // Animatsiya tugagach (4 soniya) DOM dan o'chirish
     setTimeout(() => {
-        xabarMatn.remove();
+        if (xabarDiv) xabarDiv.remove();
     }, 4000);
+}
 
-    xabarCon.appendChild(xabarMatn)
-}   
-
+// Kirish Funksiyasi
 async function Kirish() {
-    let ism = document.getElementById('input')
-    let tel = document.getElementById('pasvord')
+    const emailInput = document.getElementById('input');
+    const parolInput = document.getElementById('pasvord');
+    const loginBtn = document.querySelector(".btn");
 
-    if (ism.value == "" && tel.value == "") {
-          xabarnoma("Maydonlarni to'ldiring",'info')
-        return
+    const email = emailInput.value.trim();
+    const parol = parolInput.value.trim();
+
+    // Validatsiya
+    if (!email || !parol) {
+        xabarnoma("Barcha maydonlarni to'ldiring!", "info");
+        return;
     }
 
-    const { data: foydalanuvchi, error: xatolik } = await _supabase
-        .from('login')
-        .select('*')
-        .eq('email', ism.value)
-        .eq('parol', tel.value)
-    if (xatolik) {
-        xabarnoma('Xatolik yuz berdi','error')
-        return
-    }
-    if (foydalanuvchi.length > 0) {
-        xabarnoma('Siz tizimga kirdingiz','success')
-        setTimeout(() => {
-            window.location.href = 'index.html'
-        }, 2500);
-    }
-    else {
-         xabarnoma("Siz ro'yhatdan o'tmagansiz",'error')
+    // Loading holati
+    loginBtn.disabled = true;
+    loginBtn.innerText = "Tekshirilmoqda...";
+
+    try {
+        const { data: foydalanuvchi, error: xatolik } = await _supabase
+            .from('login')
+            .select('*')
+            .eq('email', email)
+            .eq('parol', parol);
+
+        if (xatolik) throw xatolik;
+
+        if (foydalanuvchi && foydalanuvchi.length > 0) {
+            xabarnoma("Muvaffaqiyatli kirdingiz!", "success");
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        } else {
+            xabarnoma("Email yoki parol noto'g'ri!", "error");
+            loginBtn.disabled = false;
+            loginBtn.innerText = "Kirish";
+        }
+
+    } catch (err) {
+        console.error(err);
+        xabarnoma("Tizimda xatolik yuz berdi!", "error");
+        loginBtn.disabled = false;
+        loginBtn.innerText = "Kirish";
     }
 }
+
+// Google Login (Hozircha faqat xabar)
+function GoogleBilanKirish() {
+    xabarnoma("Google bilan kirish tez kunda...", "info");
+}
+
+// Enter tugmasi bilan kirish
+document.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') Kirish();
+});
