@@ -404,12 +404,88 @@ ul a {
     width: 100%;
 }
 
+
+@media (max-width: 992px) {
+    .container {
+        padding: 0 15px;
+    }
+    .content-wrapper {
+        max-width: 95%;
+    }
+    .main-number {
+        font-size: 100px;
+    }
+    .stepper {
+        gap: 8px;
+    }
+}
+
 @media (max-width: 768px) {
-    .info-section {
-        grid-template-columns: 1fr;
+    header ul {
+        display: none; 
     }
 
     .bitta h1 {
-        font-size: 32px;
+        font-size: 28px;
+    }
+
+    .info-footer {
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 20px;
+    }
+
+    .info-section {
+        grid-template-columns: 1fr; 
+    }
+
+    .stepper-container {
+        overflow-x: auto; 
+        justify-content: flex-start;
+        padding: 20px 0 40px 0;
+    }
+
+    .stepper {
+        width: 600px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .main-number {
+        font-size: 80px;
+    }
+
+    .queue-card {
+        padding: 40px 15px;
+        border-radius: 20px;
+    }
+
+    .card.glass {
+        flex-direction: column; /* Ikonka va matn ustun bo'ladi */
+        text-align: center;
+        gap: 15px;
+    }
+
+    .icon-box {
+        margin-right: 0;
+    }
+
+    .toggle-switch {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .exit-btn {
+        width: 100%; /* Tugma butun ekran bo'ylab */
+    }
+
+    #toast-container {
+        width: 90%; /* Toast telefonda torroq chiqadi */
+        right: -100%;
+    }
+    
+    #toast-container.active {
+        right: 5%;
+        left: 5%;
     }
 }
