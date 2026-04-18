@@ -17,7 +17,9 @@ body {
 .navbar{
     background-color: white;
 }
-
+.otish-btn{
+    color: white;
+}
 .navbar .container{
     display: flex;
     justify-content: space-between;
