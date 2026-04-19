@@ -1,197 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MedBook | Shifokorlar Ro'yxati</title>
     <link rel="stylesheet" href="shidokorlarroyhati.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="container">
-            <div class="logo">MedBook</div>
-            <nav>
-                <a href="#">Asosiy</a>
-                <a href="#" class="active">Shifokorlar</a>
-                <a href="#">Xizmatlar</a>
-                <a href="#">Yordam</a>
+    <div id="mb-toast-container"></div>
+
+    <header class="mb-navbar">
+        <div class="mb-container">
+            <div class="mb-logo" onclick="window.location.reload()" style="cursor:pointer">MedBook</div>
+            <nav class="mb-nav">
+                <a href="bemor.html">Asosiy</a>
+                <a href="#" class="mb-active">Shifokorlar</a>
             </nav>
-            <div class="kir">
-                <a href="./kirish.html">Kirish</a>
-                <button> <a href="./royxat.html">Ro'yxatdan o'tish</a></button>
+            <div class="mb-auth" id="mb-auth-section">
             </div>
         </div>
     </header>
 
-    <section class="sec">
-        <div class="container">
-            <h1>Shifokorlar</h1>
-            <p>
-                Sizga mos mutaxassisni toping va onlayn qabulga yoziling.
-                Bizning barcha shifokorlarimiz malakali mutaxassislardir.
-            </p>
-
-            <div class="qidiruv-box">
-                <input id="qidirish" class="input" type="text" placeholder=" Shifokor ismi...">
-                <div id="tozala" class="tozala">
-                    <button class="active">Hammasi</button>
-                    <button>Terapevt</button>
-                    <button>Stomatolog</button>
-                    <button>Ko'z shifokori</button>
-                    <button>Bolalar shifokori</button>
+    <section class="mb-hero">
+        <div class="mb-container">
+            <h1>Malakali Shifokorlar</h1>
+            <div class="mb-search-box">
+                <input type="text" id="mb-search-input" placeholder="Ism yoki yo'nalish bo'yicha qidirish...">
+                <div class="mb-filter-tags" id="mb-filter-tags">
+                    <button class="mb-filter-btn mb-active">Hammasi</button>
+                    <button class="mb-filter-btn">Stomatolog</button>
+                    <button class="mb-filter-btn">Terapevt</button>
+                    <button class="mb-filter-btn">Kardiolog</button>
+                    <button class="mb-filter-btn">Pediatr</button>
                 </div>
             </div>
         </div>
     </section>
-    <section class="sec1">
-        <div id="con" class="container">
-            <div class="card">
-                <div class="left">
-                    <div class="avatar">SK</div>
-                    <div>
-                        <h3 id="ism">Dr. Sardor Komilov</h3>
-                        <p id="turi">Stomatolog</p>
-                        <span class="rating">⭐️ 4.9 • 210 sharh</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <p>Bugun bo‘sh: <span id="vaqt">14:00 16:00</span></p>
-                    <button>Qabul olish →</button>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="left">
-                    <div class="avatar">MY</div>
-                    <div>
-                        <h3>Dr. Malika Yusupova</h3>
-                        <p>Ko'z shifokori</p>
-                        <span class="rating">⭐️ 4.7 • 156 sharh</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <p>Bugun bo‘sh: <span>10:00 13:00</span></p>
-                    <button>Qabul olish →</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="left">
-                    <div class="avatar">NR</div>
-                    <div>
-                        <h3>Dr. Jasur Toshmatov</h3>
-                        <p>Terapevt</p>
-                        <span class="rating">⭐️ 4.8 • 85 sharh</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <p>Ertaga: <span>09:00 11:00</span></p>
-                    <button>Qabul olish →</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="left">
-                    <div class="avatar">JT</div>
-                    <div>
-                        <h3>Dr. Nilufar Rahimova</h3>
-                        <p>Bolalar shifokori</p>
-                        <span class="rating">⭐️ 4.8 • 85 sharh</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <p>Ertaga: <span>15:00</span></p>
-                    <button>Qabul olish →</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="left">
-                    <div class="avatar">BI</div>
-                    <div>
-                        <h3> Dr. Bobur Ismoilov</h3>
-                        <p>Terapevt</p>
-                        <span class="rating">⭐️ 4.8 • 85 sharh</span>
-                    </div>
-                </div>
-                <div class="right">
-                    <p>Ertaga: <span>Toliq band</span></p>
-                    <button>Qabul olish →</button>
-                </div>
-            </div>
+    <main class="mb-container">
+        <div id="mb-doctors-list" class="mb-grid">
         </div>
+    </main>
 
-    </section>
-    <section class="steps">
-        <h2>Shifokorga oson yo‘l</h2>
-
-        <div class="steps-container">
-
-            <div class="step">
-                <div class="icon">👨‍⚕️</div>
-                <h3>Tanlov</h3>
-                <p>Sizga mos mutaxassisni reyting va sharhlar asosida tanlang.</p>
-            </div>
-
-            <div class="line"></div>
-
-            <div class="step">
-                <div class="icon">📅</div>
-                <h3>Vaqtni belgilash</h3>
-                <p>Shifokor bo‘sh vaqtidan o‘zingizga qulayini tanlang.</p>
-            </div>
-
-            <div class="line"></div>
-
-            <div class="step">
-                <div class="icon">✔️</div>
-                <h3>Tasdiqlash</h3>
-                <p>SMS orqali tasdiqlov oling va klinikaga tashrif buyuring.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="footer">
-
-        <div class="footer-container">
-
-            <div class="col">
-                <h3>MedBook</h3>
-                <p>Toshkent shahri, Yunusobod tumani, Bog‘ishamol ko‘chasi 12-uy.</p>
-            </div>
-
-            <div class="col">
-                <h4>Bo‘limlar</h4>
-                <p>Bosh sahifa</p>
-                <p>Shifokorlar</p>
-                <p>Klinikalar</p>
-                <p>Biz haqimizda</p>
-            </div>
-
-            <div class="col">
-                <h4>Shifokorlar uchun</h4>
-                <p>Klinikani qo‘shish</p>
-                <p>Shifokor qo‘shish</p>
-                <p>Hamkorlik</p>
-            </div>
-
-            <div class="col">
-                <h4>Aloqa</h4>
-                <div class="icons">
-                    📞 📩 🔗
-                </div>
-            </div>
-
-        </div>
-
-        <div class="bottom">
-            © 2024 MedBook. Barcha huquqlar himoyalangan.
-        </div>
-
-    </footer>
-    <script src="./shifokorlarroyhati.js"></script>
+    <script src="shifokorlarroyhati.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 </head>
+
 <body>
     <div class="xabar-con"></div>
     <div class="bg-blobs">
@@ -34,10 +36,11 @@
                 <h1>Shifokorga qabul <span class="rang">bir daqiqada</span></h1>
                 <p>Shikoyatingizni yozing — AI sizga to'g'ri shifokorni topadi</p>
             </div>
-            
+
             <div class="katta2-katta">
                 <div class="katta2" data-tilt data-tilt-max="5">
-                    <textarea class="katta-input" placeholder="Masalan: Tishim og'riyapti va jag'imda shish bor..."></textarea>
+                    <textarea class="katta-input"
+                        placeholder="Masalan: Tishim og'riyapti va jag'imda shish bor..."></textarea>
                     <button class="katta-golos"><img src="./golos.svg" alt=""> Ovoz bilan aytish</button>
                     <button class="katta-kirish">Shifokor toping <img src="./next.svg" alt=""></button>
                 </div>
@@ -56,9 +59,12 @@
                         <p>Sizning belgilaringiz asosida:</p>
                     </div>
                     <h1 class="rang">Stomatolog</h1>
-                    <p>Tish og'rig'i va jag' shishi — tish yoki milk muammosi bo'lishi mumkin</p>
-                    <button class="katta4-btn"><img src="./zarur.svg" alt=""> Bu tibbiy tashxis emas. Shifokor ko'rigiga boring.</button>
-                    <button class="katta4-btn2">Stomatolog qabuliga yozilish <img src="next2.svg" alt=""></button>
+                    <p id="ai-tavsif">Tish og'rig'i va jag' shishi — tish yoki milk muammosi bo'lishi mumkin</p>
+                    <button class="katta4-btn"><img src="./zarur.svg" alt=""> Bu tibbiy tashxis emas. Shifokor ko'rigiga
+                        boring.</button>
+                    <a class="nima" href="./kirish.html">
+                        <button class="katta4-btn2">Stomatolog qabuliga yozilish <img src="next2.svg" alt=""></button>
+                    </a>
                 </div>
             </div>
 
@@ -72,4 +78,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
