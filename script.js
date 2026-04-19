@@ -1,4 +1,4 @@
-const kalit = ""
+const GROQ_API_KEY = "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"; 
 
 const xabarCon = document.querySelector(".xabar-con");
 const mainInput = document.querySelector(".katta-input");
@@ -52,7 +52,7 @@ async function getAIDiagnosis(userInput) {
         const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${kalit}`,
+                "Authorization": `Bearer ${GROQ_API_KEY}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
