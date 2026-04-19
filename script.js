@@ -9,14 +9,15 @@ const resultWrapper = document.querySelector(".katta4-katta");
 
 // Elementlar (Natija kartasi ichidagilar)
 const doctorTitle = document.querySelector(".katta4 .rang");
-const doctorDesc = document.querySelector("#ai-tavsif"); // O'sha o'zgarmayotgan p
+const doctorDesc = document.querySelector("#ai-tavsif");
 const bookBtn = document.querySelector(".katta4-btn2");
 
 // Boshida natijani yashirib qo'yamiz
-resultWrapper.style.display = "none";
+if (resultWrapper) resultWrapper.style.display = "none";
 
-// 2. TOAST FUNKSIYASI
+// 2. TOAST FUNKSIYASI (XABARNOMA)
 function xabarnoma(xabar, turi) {
+    if (!xabarCon) return;
     const div = document.createElement('div');
     div.className = `xabar ${turi}`;
     div.innerText = xabar;
@@ -29,8 +30,7 @@ exampleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         mainInput.value = btn.innerText;
         xabarnoma("Namuna tanlandi", "success");
-        // Avtomatik tahlilni boshlash
-        findBtn.click();
+        findBtn.click(); // Avtomatik tahlilni boshlash
     });
 });
 
@@ -39,14 +39,20 @@ async function getAIDiagnosis(userInput) {
     const prompt = `
     Foydalanuvchi shikoyati: "${userInput}"
     Vazifa:
-    1. Mos shifokor mutaxassisini toping.
+    1. Mos shifokor mutaxassisini toping (masalan: STOMATOLOG, KARDIOLOG va h.k.).
     2. Nega aynan u kerakligini 1 ta gapda tushuntiring.
     Javobni FAQAT JSON formatida bering:
     {
         "doctor": "Mutaxassis nomi",
         "description": "Shikoyatga mos tushuntirish matni",
-        "button": "Mutaxassis nomi qabuliga yozilish"
+        "button": "Qabuliga yozilish"
     }`;
+
+    // Agar kalit bo'sh bo'lsa ogohlantirish
+    if (!GROQ_API_KEY) {
+        console.error("API kalit topilmadi! Vercel Settings-dan GROQ_API_KEY ni qo'shing.");
+        return null;
+    }
 
     try {
         const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -58,6 +64,7 @@ async function getAIDiagnosis(userInput) {
             body: JSON.stringify({
                 model: "llama-3.3-70b-versatile",
                 messages: [{ role: "user", content: prompt }],
+                temperature: 0.5,
                 response_format: { type: "json_object" }
             })
         });
@@ -70,7 +77,7 @@ async function getAIDiagnosis(userInput) {
     }
 }
 
-// 5. ASOSIY TUGMA BOSILGANDA
+// 5. ASOSIY TUGMA (SHIFOKOR TOPISH)
 findBtn.addEventListener('click', async () => {
     const text = mainInput.value.trim();
     if (!text) {
@@ -78,35 +85,36 @@ findBtn.addEventListener('click', async () => {
         return;
     }
 
-    // Yuklanish effekti
+    // Yuklanish holati
     findBtn.disabled = true;
-    findBtn.innerHTML = `AI tahlil qilmoqda...`;
-    resultWrapper.style.display = "none"; // Yangi qidiruvda eskisini yashiramiz
+    const originalContent = findBtn.innerHTML;
+    findBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> AI tahlil qilmoqda...`;
+    resultWrapper.style.display = "none";
 
     const res = await getAIDiagnosis(text);
 
     if (res) {
         // Ma'lumotlarni yangilash
         doctorTitle.innerText = res.doctor;
-        doctorDesc.innerText = res.description; // Endi bu o'zgaradi!
-        bookBtn.innerHTML = `${res.button} <img src="next2.svg">`;
+        doctorDesc.innerText = res.description;
+        bookBtn.innerHTML = `${res.button} <img src="next2.svg" alt="icon">`;
 
         // Natijani ko'rsatish
         resultWrapper.style.display = "flex"; 
         resultWrapper.style.justifyContent = "center";
         
-        // Silliq skroll
+        // Silliq skroll qilish
         setTimeout(() => {
             resultWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
+        }, 150);
 
-        xabarnoma("Tahlil yakunlandi", "success");
+        xabarnoma("AI tahlili muvaffaqiyatli yakunlandi", "success");
     } else {
-        xabarnoma("Xatolik yuz berdi", "error");
+        xabarnoma("AI tahlilida xatolik yuz berdi", "error");
     }
 
     findBtn.disabled = false;
-    findBtn.innerHTML = 'Shifokor toping <img src="./next.svg">';
+    findBtn.innerHTML = originalContent;
 });
 
 // 6. OVOZLI QIDIRUV (SPEECH API)
@@ -116,8 +124,24 @@ if (SpeechRecognition) {
     recognition.lang = 'uz-UZ';
 
     voiceBtn.addEventListener('click', () => {
-        recognition.start();
-        voiceBtn.innerText = "Eshityapman...";
+        try {
+            recognition.start();
+            voiceBtn.innerHTML = `<i class="fa-solid fa-microphone-lines fa-beat"></i>`;
+            xabarnoma("Sizni eshityapman...", "info");
+        } catch (e) {
+            console.error("Speech start error:", e);
+        }
     });
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        mainInput.value = transcript;
+        voiceBtn.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
+        findBtn.click(); // Ovoz tugagach avtomatik qidirish
+    };
+
+    recognition.onerror = () => {
+        voiceBtn.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
+        xabarnoma("Ovozni aniqlab bo'lmadi", "error");
+    };
 }
-window.onload = runCounter;
