@@ -1,38 +1,26 @@
-const textarea = document.getElementById('complaint-input');
-const analyzeBtn = document.getElementById('analyze-btn');
-const aiTitle = document.querySelector('.ai-title');
-const aiDesc = document.querySelector('.ai-desc');
-const possibilitiesList = document.querySelector('.possibilities ul');
+const input = document.getElementById("input");
+const btn = document.getElementById("btn");
 
-analyzeBtn.addEventListener('click', () => {
-    const text = textarea.value.toLowerCase();
+const title = document.getElementById("title");
+const desc = document.getElementById("desc");
+const list = document.getElementById("list");
 
-    if (text.length < 5) {
-        alert("Iltimos, shikoyatingizni batafsilroq yozing.");
-        return;
+btn.addEventListener("click", () => {
+    let text = input.value.toLowerCase();
+
+    if(text.includes("tish")){
+        title.textContent = "Stomatolog";
+        desc.textContent = "Tish muammosi aniqlanishi mumkin.";
+        list.innerHTML = "<li>Karies</li><li>Gingivit</li><li>Pulpit</li>";
     }
-
-    analyzeBtn.textContent = "Tahlil qilinmoqda...";
-    setTimeout(() => {
-        analyzeBtn.innerHTML = "AI tahlil qilsin &rarr;";
-        if (text.includes('tish') || text.includes('milki') || text.includes('og\'iz')) {
-            updateResults('Stomatolog', 'Tish va milk sohasidagi muammolar aniqlandi.', ['Karies', 'Gingivit', 'Pulpit']);
-        } else if (text.includes('bosh') || text.includes('miya')) {
-            updateResults('Nevropatolog', 'Bosh og\'rig\'i va asab tizimi tahlili.', ['Migren', 'Charchoq', 'Qon bosimi']);
-        } else if (text.includes('oshqozon') || text.includes('qorin')) {
-            updateResults('Gastrenterolog', 'Hovm hazm qilish tizimi muammolari.', ['Gastrit', 'Diyetik buzilish', 'Zarda bo\'lishi']);
-        } else {
-            updateResults('Terapevt', 'Umumiy simptomlar aniqlandi.', ['Shamollash', 'Vitamini yetishmasligi', 'Umumiy ko\'rik']);
-        }
-    }, 1500);
+    else if(text.includes("bosh")){
+        title.textContent = "Nevropatolog";
+        desc.textContent = "Bosh og'riq muammosi.";
+        list.innerHTML = "<li>Migren</li><li>Charchoq</li><li>Stress</li>";
+    }
+    else{
+        title.textContent = "Terapevt";
+        desc.textContent = "Umumiy muammo.";
+        list.innerHTML = "<li>Shamollash</li><li>Vitamin yetishmasligi</li>";
+    }
 });
-function updateResults(title, desc, issues) {
-    aiTitle.textContent = title;
-    aiDesc.textContent = desc;
-    possibilitiesList.innerHTML = '';
-    issues.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        possibilitiesList.appendChild(li);
-    });
-}
