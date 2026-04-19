@@ -152,6 +152,7 @@ body {
     justify-content: center;
     gap: 10px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 /* Stats */
