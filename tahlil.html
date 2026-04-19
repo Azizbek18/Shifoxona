@@ -1,127 +1,104 @@
 <!DOCTYPE html>
 <html lang="uz">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedBook - AI Tahlili</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- fontawesome link -->
     <link rel="stylesheet" href="tahlil.css">
 </head>
-<body>
 
+<body>
     <header class="navbar">
         <div class="logo">MedBook</div>
-        <nav class="nav">
-                <li><a href="./index.html">Asosiy</a></li>
-                <li><a href="./shifokorlarroyxati.html" class="rang">Shifokorlar</a></li>
-                <li><a href="./shifokor.html">Xizmatlar</a></li>
-                <li><a href="./navbat.html">Navbat</a></li>
-        </nav>
-        <div class="auth-buttons">
-            <a href="./royxat.html"><button class="kirish">Kirish</button></a>
-            <a href="./kirish.html"><button class="otish">Ro'yxatdan o'tish</button></a>
+
+        <ul class="nav">
+            <li><a href="#">Asosiy</a></li>
+            <li><a href="#">Shifokorlar</a></li>
+            <li><a href="#">Xizmatlar</a></li>
+            <li><a href="#">Navbat</a></li>
+        </ul>
+
+        <div class="auth">
+            <button class="kirish">Kirish</button>
+            <button class="royxat">Ro'yxat</button>
         </div>
     </header>
 
     <main class="container">
-        <section class="form-section">
+
+        <!-- LEFT -->
+        <section>
             <h1>Shifokor toping</h1>
-            <p class="subtitle">Shikoyatingizni batafsil yozing</p>
+            <p class="subtitle">Shikoyatingizni yozing</p>
 
-            <div class="card textarea-card">
-                <div class="card-header">
-                    <span>SHIKOYAT TAFSILOTI</span>
-                    <span id="char-count">0 / 500</span>
-                </div>
-                <textarea id="complaint-input" placeholder="Qanday muammoingiz bor? Batafsil yozing..."></textarea>
+            <div class="card">
+                <textarea id="input" placeholder="Muammoingizni yozing..."></textarea>
             </div>
 
-            <div class="quick-tags">
-                <p>+ Tez qo'shish:</p>
-                <div class="tags-list">
-                    <button class="tag">Bosh og'riq</button>
-                    <button class="tag">Isitma</button>
-                    <button class="tag">Yo'tal</button>
-                    <button class="tag">Tish og'riq</button>
-                    <button class="tag">Oshqozon</button>
-                </div>
+            <div class="tags">
+                <button>Bosh og'riq</button>
+                <button>Isitma</button>
+                <button>Yo'tal</button>
+                <button>Tish og'riq</button>
+                <button>Oshqozon</button>
             </div>
 
-            <div class="form-options">
-                <div class="duration">
-                    <p>Davomiyligi:</p>
-                    <label><input type="radio" name="duration" value="today"> Bugun</label>
-                    <label><input type="radio" name="duration" value="2-3days"> 2-3 kun</label>
-                    <label><input type="radio" name="duration" value="week"> Bir hafta</label>
-                </div>
-                <div class="pain-range">
-                    <p>Og'riq darajasi: <span id="pain-val">6</span></p>
-                    <input type="range" id="pain-slider" min="1" max="10" value="6">
-                    <div class="range-labels">
-                        <span>ENGIL</span>
-                        <span>O'RTA</span>
-                        <span>KUCHLI</span>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn-analyze" id="analyze-btn">AI tahlil qilsin &rarr;</button>
+            <button class="btn" id="btn">AI tahlil qilsin →</button>
         </section>
 
-        <aside class="results-section">
+        <!-- RIGHT -->
+        <aside>
+
             <div class="card ai-card">
-                <div class="match-badge">85% MOS</div>
-                <p class="ai-label">AI TAHLIL:</p>
-                <h2 class="ai-title">Stomatolog</h2>
-                <p class="ai-desc">Tish og'rig'i va jag' shishi — tish yoki milk kasalligi alomatlari bo'lishi mumkin.</p>
-                
+                <div class="badge">85% MOS</div>
+
+                <p>AI TAHLIL:</p>
+                <h2 class="ai-title" id="title">Stomatolog</h2>
+
+                <p class="ai-desc" id="desc">
+                    Tish og'rig'i aniqlanishi mumkin.
+                </p>
+
                 <div class="possibilities">
-                    <p>EHTIMOLIY HOLATLAR:</p>
-                    <ul>
-                        <li>Tish kariesi</li>
-                        <li>Milk yallig'lanishi</li>
-                        <li>Jag' bo'g'imi muammosi</li>
+                    <p>Ehtimoliy holatlar:</p>
+                    <ul id="list">
+                        <li>Karies</li>
+                        <li>Gingivit</li>
+                        <li>Jag muammosi</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="doctors-list">
-                <p class="section-title">TAVSIYA ETILGAN SHIFOKORLAR</p>
-                
-                <div class="doctor-item">
-                    <div class="doc-info">
-                        <div class="doc-avatar">
-                            <img src="./Shifokor surati (2).svg" alt="">
-                        </div>
-                        <div class="doc-text">
-                            <h4>Dr. Kamolov S.</h4>
-                            <span>Bugun 14:00</span>
-                        </div>
-                    </div>
-                    <button class="btn-book">Band qilish</button>
+            <div class="doctor">
+                <div>
+                    <b>Dr. Kamolov</b><br>
+                    <small>Bugun 14:00</small>
                 </div>
-
-                <div class="doctor-item">
-                    <div class="doc-info">
-                        <div class="doc-avatar">
-                            <img src="./Shifokor surati (1).svg" alt="">
-                        </div>
-                        <div class="doc-text">
-                            <h4>Dr. Yusupova M.</h4>
-                            <span>Ertaga 10:00</span>
-                        </div>
-                    </div>
-                    <button class="btn-book">Band qilish</button>
-                </div>
+                <button class="doc-btn">Band qilish</button>
             </div>
 
-            <div class="warning-box">
-                Bu tashxis emas — AI algoritmlari asosida berilgan tavsiya.
+            <div class="doctor">
+                <div>
+                    <b>Dr. Yusupova</b><br>
+                    <small>Ertaga 10:00</small>
+                </div>
+                <button class="doc-btn">Band qilish</button>
             </div>
+
+            <div class="warning">
+                Bu tashxis emas — faqat AI tavsiya.
+            </div>
+
         </aside>
+
     </main>
 
     <script src="tahlil.js"></script>
 </body>
+
 </html>
