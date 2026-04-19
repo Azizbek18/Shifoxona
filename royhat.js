@@ -1,5 +1,5 @@
-const supabaseKey = 'sb_publishable_qguz__gQ8NQiED350KJ6ZA_PTj-pMZ2';
-const supaBaseUrl = 'https://yzucexsnhdaicnrkztrj.supabase.co';
+const supabaseKey = 'sb_publishable_WaZvU4qjGkSQu2Vd1qZujw_RcPZfqAh';
+const supaBaseUrl = 'https://nwjqvgqydrjkveievogo.supabase.co';
 
 const _supabase = supabase.createClient(supaBaseUrl, supabaseKey);
 const xabarCon = document.querySelector(".xabar-con");
@@ -62,14 +62,18 @@ async function Kirish() {
                     sana: sana.value,
                     raqam: tel.value.trim(),
                     email: email.value.trim(),
-                    jinsi: jinsi.value 
+                    jinsi: jinsi.value
                 }
             ]);
 
         if (insertError) throw insertError;
 
+        // ... Supabase insert muvaffaqiyatli bo'lgan joyda:
+        localStorage.setItem('foydalanuvchiIsmi', ism.value.trim());
+        localStorage.setItem('foydalanuvchiEmail', email.value.trim()); // MANA SHU QATORNI QO'SHING
+
         xabarnoma("Muvaffaqiyatli ro'yxatdan o'tdingiz!", 'success');
-        
+
         // 2 soniyadan keyin login sahifasiga yo'naltirish
         setTimeout(() => {
             window.location.href = 'kirish.html';

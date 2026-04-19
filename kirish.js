@@ -1,7 +1,6 @@
 // Supabase sozlamalari
-const supabaseKey = 'sb_publishable_qguz__gQ8NQiED350KJ6ZA_PTj-pMZ2';
-const supaBaseUrl = 'https://yzucexsnhdaicnrkztrj.supabase.co';
-
+const supabaseKey = 'sb_publishable_WaZvU4qjGkSQu2Vd1qZujw_RcPZfqAh';
+const supaBaseUrl = 'https://nwjqvgqydrjkveievogo.supabase.co';
 const _supabase = supabase.createClient(supaBaseUrl, supabaseKey);
 
 const xabarCon = document.querySelector(".xabar-con");
@@ -51,7 +50,7 @@ async function Kirish() {
         if (foydalanuvchi && foydalanuvchi.length > 0) {
             xabarnoma("Muvaffaqiyatli kirdingiz!", "success");
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = 'bemor.html';
             }, 2000);
         } else {
             xabarnoma("Email yoki parol noto'g'ri!", "error");

@@ -139,7 +139,16 @@ body {
     gap: 10px;
     font-size: 12px;
 }
-
+/* CSS qismiga qo'shib qo'ying */
+.katta-sarlavha p {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Ikonka va matn orasidagi masofa */
+    margin: 5px 0;
+}
+.nima{
+    text-decoration: none;
+}
 .katta4-btn2 {
     background: transparent;
     border: 2px solid #004AC6;

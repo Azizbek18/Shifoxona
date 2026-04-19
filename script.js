@@ -1,74 +1,147 @@
-let qism1 = "3FYQA9MNnN2sGoO9mY5LcQW4B0C"
-let qism2 = "gsk_7UUEaFevcNmn42NSUKaVWGdyb"
-let token = qism1
-let xotira = [
-  {
-    role: "system",
-    content: `Sen tibbiy maslahatchi AI san. 
-        Javobingni quyidagi tartibda ber:
-        1. 3-4 qatorli qisqa tahlil.
-        2. Ehtimoliy 3 ta kasallik nomini ro'yxat (bullet points) ko'rinishida yoz.
-        3. Qisqa tavsiya.
-        Javobing aniq, qisqa va o'zbek tilida bo'lsin.`,
-  },
-];
-let yubor = document.getElementById("yubor");
-yubor.addEventListener("click", (e) => {
-  e.preventDefault();
-  const shikoyat = textarea.value.trim();
-  if (shikoyat === "") return;
+const GROQ_API_KEY = "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"; 
 
-  const radio = document.querySelector('input[type="radio"]:checked');
-  const davomiylik = radio
-    ? radio.parentElement.textContent.trim()
-    : "Noma'lum";
-  const sorov = `Shikoyatim: ${shikoyat}. Davomiyligi: ${davomiylik}. Og'riq darajasi:/10. Qisqa tahlil ber (4-5 qator).`;
+const xabarCon = document.querySelector(".xabar-con");
+const mainInput = document.querySelector(".katta-input");
+const findBtn = document.querySelector(".katta-kirish");
+const voiceBtn = document.querySelector(".katta-golos");
+const exampleBtns = document.querySelectorAll(".katta-btn");
+const resultWrapper = document.querySelector(".katta4-katta");
 
-  xotira.push({ role: "user", content: sorov });
+// Elementlar (Natija kartasi ichidagilar)
+const doctorTitle = document.querySelector(".katta4 .rang");
+const doctorDesc = document.querySelector("#ai-tavsif");
+const bookBtn = document.querySelector(".katta4-btn2");
 
-  // 2. API ga so'rov
-  fetch("https://api.groq.com/openai/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
-      messages: xotira,
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      let xabarAI = data.choices[0].message.content;
-      let chiroyli = marked.parse(xabarAI);
+// Boshida natijani yashirib qo'yamiz
+if (resultWrapper) resultWrapper.style.display = "none";
 
-      natijaOynasi.innerHTML = `
-            <div class="sarlavha">
-                <p class="rang">AI tahlil:</p>
-                <button class="yangi-btn">Tayyor</button>
-            </div>
-            <div class="natija-matni">${chiroyli}</div>
-        `;
-      xotira.push({ role: "assistant", content: xabarAI });
-    })
-    .catch((error) => {
-      console.error("Xatolik:", error);
-      natijaOynasi.innerHTML = `<p style="color:red;">Xatolik yuz berdi. Internetni tekshiring.</p>`;
+// 2. TOAST FUNKSIYASI (XABARNOMA)
+function xabarnoma(xabar, turi) {
+    if (!xabarCon) return;
+    const div = document.createElement('div');
+    div.className = `xabar ${turi}`;
+    div.innerText = xabar;
+    xabarCon.appendChild(div);
+    setTimeout(() => div.remove(), 4000);
+}
+
+// 3. NAMUNA TUGMALARNI ISHLATISH
+exampleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        mainInput.value = btn.innerText;
+        xabarnoma("Namuna tanlandi", "success");
+        findBtn.click(); // Avtomatik tahlilni boshlash
     });
 });
 
-const textarea = document.getElementById("textarea");
-const buttons = document.querySelectorAll(".katta-btn");
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const buttonText = button.textContent.trim();
+// 4. GROQ API ORQALI TAHLIL
+async function getAIDiagnosis(userInput) {
+    const prompt = `
+    Foydalanuvchi shikoyati: "${userInput}"
+    Vazifa:
+    1. Mos shifokor mutaxassisini toping (masalan: STOMATOLOG, KARDIOLOG va h.k.).
+    2. Nega aynan u kerakligini 1 ta gapda tushuntiring.
+    Javobni FAQAT JSON formatida bering:
+    {
+        "doctor": "Mutaxassis nomi",
+        "description": "Shikoyatga mos tushuntirish matni",
+        "button": "Qabuliga yozilish"
+    }`;
 
-    if (textarea.value.length > 0) {
-      textarea.value += ", " + buttonText;
-    } else {
-      textarea.value = buttonText;
+    // Agar kalit bo'sh bo'lsa ogohlantirish
+    if (!GROQ_API_KEY) {
+        console.error("API kalit topilmadi! Vercel Settings-dan GROQ_API_KEY ni qo'shing.");
+        return null;
     }
-    button.disabled = true;
-  });
+
+    try {
+        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${GROQ_API_KEY}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                model: "llama-3.3-70b-versatile",
+                messages: [{ role: "user", content: prompt }],
+                temperature: 0.5,
+                response_format: { type: "json_object" }
+            })
+        });
+
+        const data = await response.json();
+        return JSON.parse(data.choices[0].message.content);
+    } catch (error) {
+        console.error("API xatosi:", error);
+        return null;
+    }
+}
+
+// 5. ASOSIY TUGMA (SHIFOKOR TOPISH)
+findBtn.addEventListener('click', async () => {
+    const text = mainInput.value.trim();
+    if (!text) {
+        xabarnoma("Iltimos, shikoyatingizni yozing!", "info");
+        return;
+    }
+
+    // Yuklanish holati
+    findBtn.disabled = true;
+    const originalContent = findBtn.innerHTML;
+    findBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> AI tahlil qilmoqda...`;
+    resultWrapper.style.display = "none";
+
+    const res = await getAIDiagnosis(text);
+
+    if (res) {
+        // Ma'lumotlarni yangilash
+        doctorTitle.innerText = res.doctor;
+        doctorDesc.innerText = res.description;
+        bookBtn.innerHTML = `${res.button} <img src="next2.svg" alt="icon">`;
+
+        // Natijani ko'rsatish
+        resultWrapper.style.display = "flex"; 
+        resultWrapper.style.justifyContent = "center";
+        
+        // Silliq skroll qilish
+        setTimeout(() => {
+            resultWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 150);
+
+        xabarnoma("AI tahlili muvaffaqiyatli yakunlandi", "success");
+    } else {
+        xabarnoma("AI tahlilida xatolik yuz berdi", "error");
+    }
+
+    findBtn.disabled = false;
+    findBtn.innerHTML = originalContent;
 });
+
+// 6. OVOZLI QIDIRUV (SPEECH API)
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SpeechRecognition) {
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'uz-UZ';
+
+    voiceBtn.addEventListener('click', () => {
+        try {
+            recognition.start();
+            voiceBtn.innerHTML = `<i class="fa-solid fa-microphone-lines fa-beat"></i>`;
+            xabarnoma("Sizni eshityapman...", "info");
+        } catch (e) {
+            console.error("Speech start error:", e);
+        }
+    });
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        mainInput.value = transcript;
+        voiceBtn.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
+        findBtn.click(); // Ovoz tugagach avtomatik qidirish
+    };
+
+    recognition.onerror = () => {
+        voiceBtn.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
+        xabarnoma("Ovozni aniqlab bo'lmadi", "error");
+    };
+}

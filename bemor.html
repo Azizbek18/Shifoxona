@@ -1,87 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MedBook - Bemor Dashboard</title>
     <link rel="stylesheet" href="bemor.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    <div class="bg-blobs">
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
 
     <header class="navbar">
-        <div>MedBook</p></div>
+        <div class="logo">
+            <img src="Icon (13).svg" alt="Logo" width="30">
+            <span>MedBook</span>
+        </div>
         <nav>
-            <a href="./index.html">Asosiy</a>
-            <a href="./shifokorlarroyxati.html">Shifokorlar</a>
-            <a href="./shifokor.html">Xizmatlar</a>
-            <a href="./navbat.html">Navbat</a>
+            <a href="#">Asosiy</a>
+            <a href="#">Shifokorlar</a>
+            <a href="#">Xizmatlar</a>
+            <a href="#">Yordam</a>
         </nav>
+        <div class="nav-icons">
+            <i class="fa-regular fa-bell"></i>
+            <div class="profile-img">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Profile">
+            </div>
+        </div>
     </header>
 
-    <section class="welcome">
-        <h1>Salom, Aziz 👋</h1>
-        <p>Sog‘lig‘ingiz — eng katta boylik</p>
-    </section>
+    <main class="container">
+        <section class="welcome">
+            <h1 id="welcome-text">Salom, Aziz! 👋</h1>
+            <p>Sog‘lig‘ingiz — eng katta boylik</p>
+        </section>
 
-    <section class="cards">
-        <div class="card">
-            <h2>2</h2>
-            <p>Kelgusi qabul</p>
-        </div>
-        <div class="card">
-            <h2>5</h2>
-            <p>O‘tgan qabul</p>
-        </div>
-        <div class="card">
-            <h2>3</h2>
-            <p>Dori eslatmalari</p>
-        </div>
-        <div class="card">
-            <h2>4.8</h2>
-            <p>Reyting</p>
-        </div>
-    </section>
+        <section class="cards">
+            <div class="card" data-tilt>
+                <div class="card-header">
+                    <h2>2</h2>
+                    <i class="fa-regular fa-calendar-days icon-blue"></i>
+                </div>
+                <p>Kelgusi qabullar</p>
+            </div>
+            <div class="card" data-tilt>
+                <div class="card-header">
+                    <h2>5</h2>
+                    <i class="fa-solid fa-clock-rotate-left icon-orange"></i>
+                </div>
+                <p>O‘tgan qabullar</p>
+            </div>
+            <div class="card" data-tilt>
+                <div class="card-header">
+                    <h2>3</h2>
+                    <i class="fa-solid fa-pills icon-green"></i>
+                </div>
+                <p>Dori eslatmalari</p>
+            </div>
+            <div class="card" data-tilt>
+                <div class="card-header">
+                    <h2>4.8</h2>
+                    <i class="fa-regular fa-star icon-yellow"></i>
+                </div>
+                <p>O'rtacha reyting</p>
+            </div>
+        </section>
 
-    <section class="main">
-        <div class="left">
-            <h3>Kelgusiqabul</h3>
+        <section class="main-layout">
+            <div class="left-panel">
+                <div class="panel-header">
+                    <h3>Kelgusi qabullar</h3>
+                    <a href="#" class="add-link">+ Yangi qabul</a>
+                </div>
 
-            <div class="kir">
-                <p><strong>Dr. Kamolov — Stomatolog</strong></p>
-                <span>Bugun, 14:00</span>
+                <div class="kir-card">
+                    <div class="kir-icon"><i class="fa-solid fa-stethoscope"></i></div>
+                    <div class="kir-info">
+                        <strong>Dr. Kamolov — Stomatolog</strong>
+                        <span>Bugun, 14:00 • MedCenter 1</span>
+                    </div>
+                    <div class="status-badge warning">Navbat: 3-chi</div>
+                    <button class="btn-text-red">Bekor qilish</button>
+                </div>
+
+                <div class="kir-card">
+                    <div class="kir-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                    <div class="kir-info">
+                        <strong>Dr. Rahimova — Bolalar shifokori</strong>
+                        <span>28 Mart, 10:30</span>
+                    </div>
+                    <div class="status-badge success">Tasdiqlangan</div>
+                </div>
             </div>
 
-            <div class="kir">
-                <p><strong>Dr. Rahimova — Bolalar shifokori</strong></p>
-                <span>28 Mart, 10:30</span>
-            </div>
-        </div>
+            <div class="right-panel">
+                <div class="panel-header">
+                    <h3>Dori eslatmalari</h3>
+                    <a href="#" class="add-link">+ Dori qo'shish</a>
+                </div>
 
-        <div class="right">
-            <h3>Dori eslatmalari</h3>
+                <div class="med-item">
+                    <div class="med-icon orange"><i class="fa-solid fa-capsules"></i></div>
+                    <div class="med-details">
+                        <strong>Amoxicillin 500mg</strong>
+                        <span>Har 8 soatda • 7 kun</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
 
-            <div class="medicine">
-                <p>Amoxicillin 500mg</p>
-                <span>Har 8 soatda</span>
-            </div>
+                <div class="med-item">
+                    <div class="med-icon blue"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="med-details">
+                        <strong>Vitamin D3</strong>
+                        <span>Har kuni ertalab</span>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
 
-            <div class="medicine">
-                <p>Vitamin D3</p>
-                <span>Har kuni ertalab</span>
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <i class="fa-regular fa-lightbulb"></i>
+                        <strong>Kun tavsiyasi</strong>
+                    </div>
+                    <p>Bugun 2 litr suv ichishni unutmang. Bu metabolizmni yaxshilaydi va energiyani oshiradi.</p>
+                </div>
             </div>
+        </section>
+    </main>
 
-            <div class="medicine">
-                <p>Ibuprofen 200mg</p>
-                <span>Kerak bo‘lganda</span>
-            </div>
-
-            <div class="tip">
-                💡 Bugun 2 litr suv ichishni unutmang
-            </div>
-        </div>
-    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="bemor.js"></script>
 </body>
-
 </html>
