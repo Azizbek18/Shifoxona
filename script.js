@@ -119,13 +119,5 @@ if (SpeechRecognition) {
         recognition.start();
         voiceBtn.innerText = "Eshityapman...";
     });
-
-    recognition.onresult = (e) => {
-        mainInput.value = e.results[0][0].transcript;
-        findBtn.click(); // Ovozdan keyin ham avtomat tahlil
-    };
-
-    recognition.onend = () => {
-        voiceBtn.innerHTML = `<img src="./golos.svg"> Ovoz bilan aytish`;
-    };
 }
+window.onload = runCounter;

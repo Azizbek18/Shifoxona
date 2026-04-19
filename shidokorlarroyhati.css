@@ -28,8 +28,10 @@ body {
     z-index: 100;
     border-bottom: 1px solid #e2e8f0;
 }
-
-.mb-navbar .mb-container {
+.otish-btn{
+    color: white;
+}
+.navbar .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
